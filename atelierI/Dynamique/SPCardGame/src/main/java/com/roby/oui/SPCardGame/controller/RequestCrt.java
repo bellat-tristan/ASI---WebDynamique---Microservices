@@ -26,5 +26,16 @@ public class RequestCrt {
         return "index";
     }
 
+    @RequestMapping(value = { "/card"}, method = RequestMethod.GET)
+    public String viewCard(Model model) {
+        return "card";
+    }
+
+    @RequestMapping(value = { "/searchCard"}, method = RequestMethod.GET)
+    public String viewSearchCard(Model model) {
+        return "searchCard";
+    }
+
+
 
 }
