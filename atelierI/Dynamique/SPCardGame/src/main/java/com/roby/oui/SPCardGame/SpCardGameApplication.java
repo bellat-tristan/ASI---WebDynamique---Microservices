@@ -2,7 +2,7 @@ package com.roby.oui.SPCardGame;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-
+/*
 @SpringBootApplication
 public class SpCardGameApplication {
 
@@ -10,4 +10,4 @@ public class SpCardGameApplication {
 		SpringApplication.run(SpCardGameApplication.class, args);
 	}
 
-}
+}*/
