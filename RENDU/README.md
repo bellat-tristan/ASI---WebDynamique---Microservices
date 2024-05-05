@@ -17,22 +17,22 @@ Tout les éléments du cahier des charges ont été réalisés.
 
 **Architecture statique :**
 
-![Schéma statique](/img/Static%20V2.drawio.png)
+![Schéma statique](img/Static%20V2.drawio.png)
 
 **Architecture dynamique :** 
 
-![Schéma dynamique](/img/Dynamique%20V1.drawio.png)
+![Schéma dynamique](img/Dynamique%20V1.drawio.png)
 
 ---
 
 **Diagramme de séquence :** 
 
-![Diagramme séquence](/img/Diagramme-Sequence.jpg)
+![Diagramme séquence](img/Diagramme-Sequence.jpg)
 
 
 **Diagramme de classe :** 
 
-![Diagramme classe](/img/Diagramme-Classe.jpg)
+![Diagramme classe](img/Diagramme-Classe.jpg)
 
 ---
 
