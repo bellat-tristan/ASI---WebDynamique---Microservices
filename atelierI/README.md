@@ -1,4 +1,18 @@
 # ASI---WebDynamique---Microservices
+
+Anaïs Delcamp 
+
+Eléa Machillot 
+
+David Jeannin 
+
+Tristant Bellat 
+
+Git : https://github.com/bellat-tristan/ASI---WebDynamique---Microservices 
+
+Tout les éléments du cahier des charges ont été réalisés. 
+
+
 ## Atelier 1 
 
 **Architecture statique :**
