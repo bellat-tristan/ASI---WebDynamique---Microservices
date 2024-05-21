@@ -6,10 +6,10 @@
     <link rel="stylesheet" type="text/css" th:href="@{/css/style.css}" />
 </head>
 <body>
-
-<div th:fragment="header">
-    <h1>Welcome</h1>
+<div th:fragment="header" class="header">
+    <h1 class="headertocenter">0€</h1>
+    <h1 class="headertocenter" th:text="${pageTitle}"></h1>
+    <a href="/view" class="headertocenter"><img th:src="@{/img/connexion.png}" alt="Connexion"></a>
 </div>
-
 </body>
 </html>

@@ -1,0 +1,53 @@
+html {
+    font-size: 30px;
+}
+
+body {
+    font-size: 20px;
+    text-align: center;
+}
+
+.imageCard {
+    height: 100px;
+}
+
+.limitText {
+    text-overflow: ellipsis;
+}
+
+.ui.messageLight {
+    background: #ffffff;
+    padding: 1em 1.5em;
+    line-height: 1.4285em;
+    border-radius: .28571429rem;
+    box-shadow: 0 0 0 1px rgba(252, 252, 252, 0.22) inset, 0 0 0 0 transparent;
+}
+
+.overflowHiden {
+    overflow: auto;
+}
+
+.imgindex-container {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    margin-top: 20px;
+}
+
+.imgindex img {
+    width: 600px;
+    margin-right: 100px;
+}
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 20px;
+    margin-top: 20px;
+}
+
+.headertocenter img {
+    margin-right: 10px;
+    width: 100px;
+}

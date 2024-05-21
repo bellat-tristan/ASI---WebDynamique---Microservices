@@ -3,18 +3,19 @@
 <head>
     <meta charset="UTF-8" />
     <title>Welcome</title>
-    <link rel="stylesheet" type="text/css" th:href="@{/css/style.css}" />
+    <link rel="stylesheet" type="text/css" href="/css/custom.css" />
 </head>
 <body>
 <div th:replace="~{fragments/header :: header}">
-    <h1>Welcome</h1>
+    <h1>Cardquest</h1>
     <hr>
 </div>
 <h2 th:utext="${message}">..!..</h2>
+<div class="imgindex-container">
     <ul>
-        <a href="/view" class="imgindex"><img src="/img/buy.jpg" width="100" alt=""></a>
-        <a href="/addCard" class="imgindex"><img src="img/sell.jpg" width="100" alt=""></a>
-        <a href="/list" class="imgindex"><img src="img/pay.jpg" width="100" alt=""></a>
+        <a href="/view" class="imgindex"><img src="/img/buy.jpg" alt="" ></a>
+        <a href="/addCard" class="imgindex"><img src="/img/sell.jpg" alt=""></a>
+        <a href="/list" class="imgindex"><img src="/img/play.jpg" alt=""></a>
     </ul>
 </div>
 </body>

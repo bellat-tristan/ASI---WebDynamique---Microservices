@@ -26,23 +26,26 @@ public class RequestCrt {
 
         model.addAttribute("message", message);
         model.addAttribute("messageLocal", messageLocal);
-
+        model.addAttribute("pageTitle", "Accueil");
         return "index";
     }
 
     @RequestMapping(value = {"/card"}, method = RequestMethod.GET)
     public String viewCard(Model model) {
+        model.addAttribute("pageTitle", "Card");
         return "card";
     }
 
     @RequestMapping(value = {"/form-sample"}, method = RequestMethod.GET)
     public String viewSearchCard(Model model) {
+        model.addAttribute("pageTitle", "Form");
         return "form-sample";
     }
 
     @RequestMapping(value = {"/view"}, method = RequestMethod.GET)
     public String view(Model model) {
         model.addAttribute("myCard", cardDao.getRandomCard());
+        model.addAttribute("pageTitle", "View");
         return "cardView";
     }
 
@@ -50,6 +53,7 @@ public class RequestCrt {
     public String addcard(Model model) {
         CardFormDTO cardForm = new CardFormDTO();
         model.addAttribute("cardForm", cardForm);
+        model.addAttribute("pageTitle", "Add card");
         return "cardForm";
     }
 
@@ -57,12 +61,14 @@ public class RequestCrt {
     public String addcard(Model model, @ModelAttribute("cardForm") CardFormDTO cardForm) {
         Card p = cardDao.addCard(cardForm.getName(), cardForm.getDescription(), cardForm.getImgUrl(), cardForm.getFamily(), cardForm.getAffinity(), cardForm.getHp(), cardForm.getEnergy(), cardForm.getAttack(), cardForm.getDefence(), cardForm.getPrix());
         model.addAttribute("myCard", p);
+        model.addAttribute("pageTitle", "Add card");
         return "cardView";
     }
 
     @RequestMapping(value = { "/list"}, method = RequestMethod.GET)
     public String viewList(Model model) {
         model.addAttribute("cardList",cardDao.getCardList() );
+        model.addAttribute("pageTitle", "List");
         return "cardViewList";
     }
 
