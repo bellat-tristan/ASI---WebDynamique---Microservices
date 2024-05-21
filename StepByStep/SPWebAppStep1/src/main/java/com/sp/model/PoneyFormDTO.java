@@ -1,5 +1,13 @@
 package com.sp.model;
 
+<<<<<<< HEAD
+=======
+import lombok.Getter;
+import lombok.Setter;
+
+@Getter
+@Setter
+>>>>>>> main
 public class PoneyFormDTO {
 
     private String color;
@@ -28,6 +36,7 @@ public class PoneyFormDTO {
         this.name = name;
         this.imgUrl = imgUrl;
     }
+<<<<<<< HEAD
 
     public String getColor() {
         return color;
@@ -58,3 +67,6 @@ public class PoneyFormDTO {
 
 
 
+=======
+}
+>>>>>>> main

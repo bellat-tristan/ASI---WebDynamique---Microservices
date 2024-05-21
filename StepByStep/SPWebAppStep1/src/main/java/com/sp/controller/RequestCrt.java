@@ -44,6 +44,7 @@ public class RequestCrt {
 
     @RequestMapping(value = { "/addPoney"}, method = RequestMethod.POST)
     public String addponey(Model model, @ModelAttribute("poneyForm") PoneyFormDTO poneyForm) {
+<<<<<<< HEAD
         Poney p = poneyDao.addPoney(poneyForm.getName(), poneyForm.getColor(), poneyForm.getSuperPower(), poneyForm.getImgUrl());
         model.addAttribute("myPoney", p);
         return "poneyView";
@@ -59,3 +60,11 @@ public class RequestCrt {
 
 
 }
+=======
+        Poney p=poneyDao.addPoney(poneyForm.getName(),poneyForm.getColor(),poneyForm.getSuperPower(),poneyForm.getImgUrl());
+        model.addAttribute("myPoney",p );
+        return "poneyView";
+
+
+    }
+>>>>>>> main
