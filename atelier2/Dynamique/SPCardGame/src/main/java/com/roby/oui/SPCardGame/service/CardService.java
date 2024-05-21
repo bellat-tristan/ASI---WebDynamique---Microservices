@@ -30,8 +30,8 @@ public class CardService {
         return cards.get(index);
     }
 
-    public Card addCard(String name, String color, String description, String imgUrl) {
-        Card card = new Card(null, color, description, name, imgUrl, null);
+    public Card addCard(String name, String description, String imgUrl, String family, String affinity, int hp, int energy, int attack, int defence, float prix) {
+        Card card = new Card(name, description, imgUrl, family, affinity, hp, energy, attack, defence, prix);
         return cardRepository.save(card);
     }
     public void deleteCard(Long id) {
