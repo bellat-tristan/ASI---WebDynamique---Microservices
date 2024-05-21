@@ -1,11 +1,10 @@
 package com.roby.oui.SPCardGame.model;
 
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 import jakarta.persistence.*;
 
-
+@Getter
+@Setter
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
@@ -22,4 +21,11 @@ public class Card {
 
     @ManyToOne
     private User owner;
+
+    public Card(String name, String color, String description, String imgUrl) {
+        this.color = color;
+        this.description = description;
+        this.name = name;
+        this.imgUrl = imgUrl;
+    }
 }

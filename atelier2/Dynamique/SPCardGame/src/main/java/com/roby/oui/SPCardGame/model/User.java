@@ -1,13 +1,12 @@
 package com.roby.oui.SPCardGame.model;
 
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import jakarta.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
-
+@Getter
+@Setter
 @Data
 @NoArgsConstructor
 @AllArgsConstructor

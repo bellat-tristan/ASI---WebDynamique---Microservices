@@ -12,7 +12,7 @@ import com.roby.oui.SPCardGame.model.Card;
 
 @Service
 public class CardDao {
-    /*private List<Card> myCardList;
+    private List<Card> myCardList;
     private Random randomGenerator;
 
     public CardDao() {
@@ -55,6 +55,6 @@ public class CardDao {
         Card p=new Card(name, color, description, imgUrl);
         this.myCardList.add(p);
         return p;
-    }*/
+    }
 }
 

@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 
 @Controller
-public class RequestCrt { /*
+public class RequestCrt {
 
     @Autowired
     private CardDao cardDao;
@@ -65,6 +65,6 @@ public class RequestCrt { /*
     public String viewList(Model model) {
         model.addAttribute("cardList",cardDao.getCardList() );
         return "cardViewList";
-    }*/
+    }
 
 }
