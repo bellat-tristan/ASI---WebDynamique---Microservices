@@ -21,6 +21,6 @@ public class User {
 
     private int credits = 100;
 
-    @OneToMany(mappedBy = "owner", cascade = CascadeType.ALL, orphanRemoval = true)
-    private List<Card> cards = new ArrayList<>();
+    @OneToMany
+    private List<Card> cards;
 }
