@@ -17,7 +17,7 @@ public class CardController {
 
     @PostMapping("/buy")
     public ResponseEntity<Card> buyCard(@RequestBody Card card) {
-        Card newCard = cardService.addCard(card.getName(), card.getColor(), card.getDescription(), card.getImgUrl());
+        Card newCard = cardService.addCard(card.getName(), card.getDescription(), card.getImgUrl(), card.getFamily(), card.getAffinity(), card.getHp(), card.getEnergy(), card.getAttack(), card.getDefence(), card.getPrix());
         return new ResponseEntity<>(newCard, HttpStatus.CREATED);
     }
 

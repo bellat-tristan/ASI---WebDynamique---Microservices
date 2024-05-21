@@ -1,30 +1,30 @@
 package com.roby.oui.SPCardGame.model;
 
+import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.Setter;
 
 @Getter
 @Setter
+@AllArgsConstructor
 public class CardFormDTO {
 
-    private String color;
-    private String description;
     private String name;
+    private String description;
     private String imgUrl;
+    private String family;
+    private String affinity;
+    private int hp;
+    private int energy;
+    private int attack;
+    private int defence;
+    private float prix;
 
 
     public CardFormDTO() {
-        this.color = "";
         this.description = "";
         this.name = "";
         this.imgUrl = "";
-    }
-
-    public CardFormDTO(String name, String color, String description, String imgUrl) {
-        this.color = color;
-        this.description = description;
-        this.name = name;
-        this.imgUrl = imgUrl;
     }
 }
 
