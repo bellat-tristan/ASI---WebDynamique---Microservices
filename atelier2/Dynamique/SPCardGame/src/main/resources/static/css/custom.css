@@ -1,10 +1,15 @@
 html {
     font-size: 30px;
+    height: 100%;
 }
 
 body {
     font-size: 20px;
     text-align: center;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
 }
 
 .imageCard {
@@ -44,10 +49,61 @@ body {
     justify-content: space-between;
     align-items: center;
     gap: 20px;
-    margin-top: 20px;
+    padding: 20px;
+    width: 100%;
+    box-sizing: border-box;
 }
 
 .headertocenter img {
     margin-right: 10px;
     width: 100px;
+}
+
+.container {
+    background-color: lightgrey;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    width: 300px;
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+h2 {
+    margin-bottom: 20px;
+}
+
+input, button {
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box; /* Ensure padding and border are included in the element's total width and height */
+}
+
+button {
+    background-color: grey;
+    border: none;
+    color: white;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: darkslategrey;
+}
+
+.error {
+    color: red;
+    margin: 10px 0;
+}
+
+.main-content {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
