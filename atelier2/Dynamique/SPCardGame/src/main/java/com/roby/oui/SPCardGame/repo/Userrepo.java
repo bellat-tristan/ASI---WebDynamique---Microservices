@@ -5,6 +5,6 @@ import org.springframework.boot.autoconfigure.security.SecurityProperties;
 import org.springframework.data.jpa.repository.JpaRepository;
 import java.util.Optional;
 
-public interface userrepo extends JpaRepository<User, Long> {
+public interface Userrepo extends JpaRepository<User, Long> {
     Optional<SecurityProperties.User> findByUsername(String username);
 }

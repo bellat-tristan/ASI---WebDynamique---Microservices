@@ -3,7 +3,6 @@ package com.roby.oui.SPCardGame.model;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
-import org.springframework.data.annotation.Id;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -11,7 +10,6 @@ import java.util.Set;
 @Setter
 @Entity
 public class User {
-    @jakarta.persistence.Id
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;

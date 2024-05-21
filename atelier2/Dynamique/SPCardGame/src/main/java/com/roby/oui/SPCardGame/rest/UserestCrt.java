@@ -1,4 +1,4 @@
 package com.roby.oui.SPCardGame.rest;
 
-public class userestCrt {
+public class UserestCrt {
 }
