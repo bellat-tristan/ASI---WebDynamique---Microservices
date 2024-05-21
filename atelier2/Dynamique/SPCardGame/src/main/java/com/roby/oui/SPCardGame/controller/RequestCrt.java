@@ -72,4 +72,9 @@ public class RequestCrt {
         return "cardViewList";
     }
 
+    @RequestMapping(value = { "/user"}, method = RequestMethod.GET)
+    public String user(Model model) {
+        return "user";
+    }
+
 }
