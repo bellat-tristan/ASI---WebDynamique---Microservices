@@ -1,0 +1,22 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8" />
+    <title>HEADER</title>
+    <link rel="stylesheet" type="text/css" th:href="@{/css/style.css}" />
+</head>
+<body>
+<div th:fragment="header" class="header">
+    <div class="headertocenter">
+        <h1>0€</h1>
+    </div>
+    <div class="headertocenter">
+        <h1 th:text="${pageTitle}"></h1>
+    </div>
+    <div class="headertocenter">
+        <a href="/user" ><img th:src="@{/img/connexion.png}" alt="Connexion"></a>
+        <div id="nameofuser" th:text="${username}">Connectez-vous</div>
+    </div>
+</div>
+</body>
+</html>

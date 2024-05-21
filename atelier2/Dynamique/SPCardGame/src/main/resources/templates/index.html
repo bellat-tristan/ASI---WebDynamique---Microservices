@@ -1,0 +1,21 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8" />
+    <title>Welcome</title>
+    <link rel="stylesheet" type="text/css" href="/css/custom.css" />
+</head>
+<body>
+<div th:replace="~{fragments/header :: header}">
+    <h1>Cardquest</h1>
+    <hr>
+</div>
+<div class="imgindex-container">
+    <ul>
+        <a href="/view" class="imgindex"><img src="/img/buy.jpg" alt="" ></a>
+        <a href="/addCard" class="imgindex"><img src="/img/sell.jpg" alt=""></a>
+        <a href="/list" class="imgindex"><img src="/img/play.jpg" alt=""></a>
+    </ul>
+</div>
+</body>
+</html>
