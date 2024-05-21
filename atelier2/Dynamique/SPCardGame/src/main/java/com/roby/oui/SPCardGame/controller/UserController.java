@@ -27,7 +27,7 @@ public class UserController {
         String password = loginDetails.get("password");
         User user = userService.getUserByUsername(username);
         if (user != null && user.getPassword().equals(password)) {
-            return new ResponseEntity<>(user, HttpStatus.OK);
+            return new ResponseEntity<>(HttpStatus.OK);
         }
         return new ResponseEntity<>(HttpStatus.UNAUTHORIZED);
     }
