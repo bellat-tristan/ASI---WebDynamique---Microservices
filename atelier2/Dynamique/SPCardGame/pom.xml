@@ -46,6 +46,17 @@
 			<artifactId>jakarta.persistence-api</artifactId>
 			<!-- scope>compile</scope> Le scope par défaut est 'compile', vous pouvez le laisser ou le supprimer -->
 		</dependency>
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+            <version>RELEASE</version>
+            <scope>compile</scope>
+        </dependency>
+		<dependency>
+			<groupId>jakarta.persistence</groupId>
+			<artifactId>jakarta.persistence-api</artifactId>
+			<version>3.1.0</version>
+		</dependency>
 	</dependencies>
 
 	<build>

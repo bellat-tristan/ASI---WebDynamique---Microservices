@@ -1,8 +1,14 @@
 package com.roby.oui.SPCardGame.model;
-import jakarta.persistence.*;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.ManyToOne;
+import lombok.Getter;
+import lombok.Setter;
+import org.hibernate.annotations.Entity;
 import org.springframework.data.annotation.Id;
-import java.util.HashSet;
-import java.util.Set;
+
+@Getter
+@Setter
 @Entity
 public class Card {
     @jakarta.persistence.Id
@@ -16,7 +22,7 @@ public class Card {
     private String imgUrl;
 
     @ManyToOne
-    private user owner;
+    private User owner;
 
     public Card() {
         this.color = "";
@@ -31,32 +37,5 @@ public class Card {
         this.name = name;
         this.imgUrl = imgUrl;
     }
-
-    public String getColor() {
-        return color;
-    }
-    public void setColor(String color) {
-        this.color = color;
-    }
-    public String getDescription() {
-        return description;
-    }
-    public void setDescription(String description) {
-        this.description = description;
-    }
-    public String getName() {
-        return name;
-    }
-    public void setName(String name) {
-        this.name = name;
-    }
-    public String getImgUrl() {
-        return imgUrl;
-    }
-    public void setImgUrl(String imgUrl) {
-        this.imgUrl = imgUrl;
-    }
-    public void setId(Long id) {this.id = id;}
-    public Long getId() {return id;}
 }
 
