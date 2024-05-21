@@ -3,14 +3,16 @@ package com.roby.oui.SPCardGame.controller;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
-import com.roby.oui.SPCardGame.model.Card;
+
 
 import org.springframework.stereotype.Service;
+
+import com.roby.oui.SPCardGame.model.Card;
 
 
 @Service
 public class CardDao {
-    private List<Card> myCardList;
+    /*private List<Card> myCardList;
     private Random randomGenerator;
 
     public CardDao() {
@@ -53,6 +55,6 @@ public class CardDao {
         Card p=new Card(name, color, description, imgUrl);
         this.myCardList.add(p);
         return p;
-    }
+    }*/
 }
 
