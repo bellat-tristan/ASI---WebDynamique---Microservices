@@ -1,7 +1,9 @@
 package com.roby.oui.SPCardGame.service;
 
 import com.roby.oui.SPCardGame.model.Card;
+import com.roby.oui.SPCardGame.model.User;
 import com.roby.oui.SPCardGame.repository.CardRepository;
+import com.roby.oui.SPCardGame.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -13,6 +15,8 @@ import java.util.Random;
 public class CardService {
     @Autowired
     private CardRepository cardRepository;
+    @Autowired
+    private UserRepository userRepository;
 
     private Random randomGenerator = new Random();
 
@@ -30,11 +34,25 @@ public class CardService {
         return cards.get(index);
     }
 
-    public Card addCard(String name, String description, String imgUrl, String family, String affinity, int hp, int energy, int attack, int defence, float prix) {
-        Card card = new Card(name, description, imgUrl, family, affinity, hp, energy, attack, defence, prix);
-        return cardRepository.save(card);
+    public void addCardToUser(Card card) {
+        // TODO recupéré user
+        User user =  new User();
+        // -----------------
+        user.getCards().add(card);
+        user.setCredits(user.getCredits() + card.getPrix());
+        userRepository.save(user);
     }
-    public void deleteCard(Long id) {
-        cardRepository.deleteById(id);
+    public void deleteCardToUser(Long id) {
+        // TODO recupéré user
+        User user =  new User();
+        // -----------------
+        Optional<Card> card = cardRepository.findById(id);
+        for (Card oneCard : user.getCards()){
+            if (oneCard.getId() == id){
+                user.getCards().remove(oneCard);
+            }
+        }
+        user.setCredits(user.getCredits() + card.get().getPrix());
+        userRepository.save(user);
     }
 }
