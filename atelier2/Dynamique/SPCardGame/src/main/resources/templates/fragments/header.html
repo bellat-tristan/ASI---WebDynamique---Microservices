@@ -15,7 +15,7 @@
     </div>
     <div class="headertocenter">
         <a href="/user" ><img th:src="@{/img/connexion.png}" alt="Connexion"></a>
-        <div id="nameofuser">Connectez-vous</div>
+        <div id="nameofuser" th:text="${username}">Connectez-vous</div>
     </div>
 </div>
 </body>
