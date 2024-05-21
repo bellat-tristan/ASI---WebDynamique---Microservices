@@ -18,6 +18,7 @@ public class User {
     private Long id;
     private String username;
     private String password;
+
     private int credits = 100;
 
     @OneToMany(mappedBy = "owner", cascade = CascadeType.ALL, orphanRemoval = true)
