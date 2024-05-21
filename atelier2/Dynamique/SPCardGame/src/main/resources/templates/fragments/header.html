@@ -7,9 +7,16 @@
 </head>
 <body>
 <div th:fragment="header" class="header">
-    <h1 class="headertocenter">0€</h1>
-    <h1 class="headertocenter" th:text="${pageTitle}"></h1>
-    <a href="/view" class="headertocenter"><img th:src="@{/img/connexion.png}" alt="Connexion"></a>
+    <div class="headertocenter">
+        <h1>0€</h1>
+    </div>
+    <div class="headertocenter">
+        <h1 th:text="${pageTitle}"></h1>
+    </div>
+    <div class="headertocenter">
+        <a href="/view" ><img th:src="@{/img/connexion.png}" alt="Connexion"></a>
+        <div id="nameofuser">Connectez-vous</div>
+    </div>
 </div>
 </body>
 </html>
