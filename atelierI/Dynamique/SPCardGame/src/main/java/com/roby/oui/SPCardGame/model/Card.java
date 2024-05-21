@@ -1,5 +1,10 @@
 package com.roby.oui.SPCardGame.model;
 
+import lombok.Getter;
+import lombok.Setter;
+
+@Getter
+@Setter
 public class Card  {
     private String color;
     private String description;
@@ -17,30 +22,6 @@ public class Card  {
         this.description = description;
         this.name = name;
         this.imgUrl=imgUrl;
-    }
-    public String getColor() {
-        return color;
-    }
-    public void setColor(String color) {
-        this.color = color;
-    }
-    public String getDescription() {
-        return description;
-    }
-    public void setDescription(String description) {
-        this.description = description;
-    }
-    public String getName() {
-        return name;
-    }
-    public void setName(String name) {
-        this.name = name;
-    }
-    public String getImgUrl() {
-        return imgUrl;
-    }
-    public void setImgUrl(String imgUrl) {
-        this.imgUrl = imgUrl;
     }
 }
 
