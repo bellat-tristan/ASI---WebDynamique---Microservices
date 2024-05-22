@@ -22,12 +22,15 @@ public class Card {
     private int energy;
     private int attack;
     private int defence;
-    private float prix;
+    private int prix;
+    private boolean enVente;
 
     @ManyToOne
+    @JoinColumn(name = "userId", referencedColumnName = "id")
     private User owner;
 
-    public Card(String name, String description, String imgUrl, String family, String affinity, int hp, int energy, int attack, int defence, float prix) {
+
+    public Card(String name, String description, String imgUrl, String family, String affinity, int hp, int energy, int attack, int defence, int prix) {
         this.name = name;
         this.description = description;
         this.imgUrl = imgUrl;
@@ -38,5 +41,6 @@ public class Card {
         this.attack = attack;
         this.defence = defence;
         this.prix = prix;
+        this.enVente = false;
     }
 }

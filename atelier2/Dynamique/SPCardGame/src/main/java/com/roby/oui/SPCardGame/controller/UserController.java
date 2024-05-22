@@ -8,7 +8,6 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import jakarta.persistence.*;
 import java.util.Map;
 
 @RestController
@@ -31,6 +30,7 @@ public class UserController {
         if (user != null && user.getPassword().equals(password)) {
             session.setAttribute("username", username);
             session.setAttribute("userId", user.getId());
+            session.setAttribute("credits", user.getCredits());
             return new ResponseEntity<>(HttpStatus.OK);
         }
         return new ResponseEntity<>(HttpStatus.UNAUTHORIZED);
