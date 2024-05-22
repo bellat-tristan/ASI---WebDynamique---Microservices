@@ -83,4 +83,15 @@ public class CardService {
             throw new RuntimeException("User not found");
         }
     }
+    public void createCard(Card card, Long userId){
+        Optional<User> userOpt = userRepository.findById(userId);
+        if (userOpt.isPresent()) {
+            User user = userOpt.get();
+            card.setOwner(user);
+            card.setEnVente(false);
+        } else {
+            card.setEnVente(true);
+        }
+        cardRepository.save(card);
+    }
 }

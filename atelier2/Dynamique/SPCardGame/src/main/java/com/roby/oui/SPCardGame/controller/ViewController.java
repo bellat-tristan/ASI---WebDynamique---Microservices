@@ -65,11 +65,11 @@ public class ViewController {
 
     @RequestMapping(value = { "/buycard"}, method = RequestMethod.GET)
     public String buycard(Model model) {
-        return "Buy";
+        return "buy";
     }
 
     @RequestMapping(value = { "/sellcard"}, method = RequestMethod.GET)
     public String sellcard(Model model) {
-        return "Sell";
+        return "sell";
     }
 }

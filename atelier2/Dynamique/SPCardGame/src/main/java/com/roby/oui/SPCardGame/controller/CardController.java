@@ -47,9 +47,9 @@ public class CardController {
         return new ResponseEntity<>(cards, HttpStatus.OK);
     }
 
-    @PostMapping("/addCards")
-    public ResponseEntity<Card> addCard(@RequestBody CardFormDTO cardForm, HttpSession session) {
-        Card card = new Card();
+    @RequestMapping(value = {"/addCards"}, method = RequestMethod.POST)
+    public ResponseEntity<Card> addCard(Card card, HttpSession session) {
+/*        Card card = new Card();
         card.setName(cardForm.getName());
         card.setDescription(cardForm.getDescription());
         card.setImgUrl(cardForm.getImgUrl());
@@ -59,11 +59,11 @@ public class CardController {
         card.setEnergy(cardForm.getEnergy());
         card.setAttack(cardForm.getAttack());
         card.setDefence(cardForm.getDefence());
-        card.setPrix(cardForm.getPrix());
+        card.setPrix(cardForm.getPrix());*/
 
         Long userId = (Long) session.getAttribute("userId");
         if (userId != null) {
-            cardService.addCardToUser(card, userId);
+            cardService.createCard(card, userId);
             return new ResponseEntity<>(card, HttpStatus.CREATED);
         } else {
             return new ResponseEntity<>(HttpStatus.UNAUTHORIZED);
