@@ -54,6 +54,8 @@ public class CardService {
             card.setOwner(user);
             card.setEnVente(false);
             cardRepository.save(card);
+
+            user.setCredits(user.getCredits() - card.getPrix());
             user.getCards().add(card);
             userRepository.save(user);
         } else {

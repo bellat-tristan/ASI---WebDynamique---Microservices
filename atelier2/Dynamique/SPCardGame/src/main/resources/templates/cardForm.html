@@ -12,22 +12,21 @@
 <div id="cardinfo-container">
     <div id="form-tocomplete">
         <h3>Preview carte</h3>
-        <form th:action="@{/addCard}"
-              th:object="${cardForm}" method="POST">
+        <form id="card-form">
             <label for="form-name">Name</label>
             <div >
                 <input id="form-name" class="inputsform" type="text"
-                       placeholder="Card name..." th:field="*{name}">
+                       placeholder="Card name..." name="name">
             </div>
             <label  for="form-description">Description</label>
             <div >
                 <input id="form-description" class="inputsform" type="text"
-                       placeholder="Card description..." th:field="*{description}">
+                       placeholder="Card description..." name="description">
             </div>
             <label  for="form-imgUrl">Image URL</label>
             <div >
                 <input  id="form-imgUrl" class="inputsform" type="text"
-                        placeholder="Card description..." th:field="*{imgUrl}">
+                        placeholder="Card image URL..." name="imgUrl">
             </div>
             <label  for="form-family">Family</label>
             <div >
@@ -38,7 +37,6 @@
                     <option value="knight">Knight</option>
                     <option value="cleric">Cleric</option>
                     <option value="bard">Bard</option>
-
                 </select>
             </div>
             <label  for="form-rarity">Rarity</label>
@@ -52,22 +50,22 @@
             </div>
             <label for="form-sliderhp">HP</label>
             <div class="sliders">
-                <input type="range" id="form-sliderhp" name="sliderhp" min="0" max="100" step="1" value="50" oninput="updateValue('sliderHpValue',this.value)">
+                <input type="range" id="form-sliderhp" name="hp" min="0" max="100" step="1" value="50" oninput="updateValue('sliderHpValue',this.value)">
                 <div class="slidersValue" id="sliderHpValue">50</div>
             </div>
             <label for="form-sliderenergy">Energy</label>
             <div class="sliders">
-                <input type="range" id="form-sliderenergy" name="sliderenergy" min="0" max="100" step="1" value="50" oninput="updateValue('sliderEnergyValue',this.value)">
+                <input type="range" id="form-sliderenergy" name="energy" min="0" max="100" step="1" value="50" oninput="updateValue('sliderEnergyValue',this.value)">
                 <div class="slidersValue" id="sliderEnergyValue">50</div>
             </div>
             <label for="form-sliderattack">Attack</label>
             <div class="sliders">
-                <input type="range" id="form-sliderattack" name="sliderattack" min="0" max="100" step="1" value="50" oninput="updateValue('sliderattackValue',this.value)">
+                <input type="range" id="form-sliderattack" name="attack" min="0" max="100" step="1" value="50" oninput="updateValue('sliderattackValue',this.value)">
                 <div class="slidersValue" id="sliderattackValue">50</div>
             </div>
             <label for="form-sliderdefense">Defense</label>
             <div class="sliders">
-                <input type="range" id="form-sliderdefense" name="sliderdefense" min="0" max="100" step="1" value="50" oninput="updateValue('sliderdefenseValue',this.value)">
+                <input type="range" id="form-sliderdefense" name="defense" min="0" max="100" step="1" value="50" oninput="updateValue('sliderdefenseValue',this.value)">
                 <div class="slidersValue" id="sliderdefenseValue">50</div>
             </div>
             <div>
@@ -75,7 +73,7 @@
                 <input type="number" class="inputsform" id="form-price" name="price" min="0" max="1000" step="0.01" placeholder="Enter price in €">
             </div>
             <div >
-                <input type="submit"  class="uk-button uk-button-default" value="Create" />
+                <input type="submit" class="uk-button uk-button-default" value="Create" />
             </div>
         </form>
     </div>
@@ -83,10 +81,40 @@
         <h3>Preview carte</h3>
     </div>
 </div>
-</body>
 <script>
     function updateValue(id, val) {
         document.getElementById(id).innerText = val;
     }
+
+    document.getElementById('card-form').addEventListener('submit', function(event) {
+        event.preventDefault();
+
+        const formData = new FormData(event.target);
+        const formDataObject = {};
+        formData.forEach((value, key) => formDataObject[key] = value);
+
+        fetch('/cards/addCards', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(formDataObject)
+        })
+            .then(response => {
+                if (response.ok) {
+                    return response.json();
+                } else {
+                    throw new Error('Network response was not ok.');
+                }
+            })
+            .then(data => {
+                console.log('Success:', data);
+                // Optionally, update the UI or redirect to another page
+            })
+            .catch(error => {
+                console.error('Error:', error);
+            });
+    });
 </script>
+</body>
 </html>

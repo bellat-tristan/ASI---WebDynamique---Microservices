@@ -84,6 +84,8 @@ public class ViewController {
         model.addAttribute("pageTitle", "List");
         String username = (String) session.getAttribute("username");
         model.addAttribute("username", username != null ? username : "Connectez-vous");
+        Integer credits = (Integer) session.getAttribute("credits");
+        model.addAttribute("credits", credits);
         return "cardViewList";
     }
 
@@ -91,6 +93,8 @@ public class ViewController {
     public String user(Model model, HttpSession session) {
         String username = (String) session.getAttribute("username");
         model.addAttribute("username", username != null ? username : "Connectez-vous");
+        Integer credits = (Integer) session.getAttribute("credits");
+        model.addAttribute("credits", credits);
         return "user";
     }
     public String login() {
