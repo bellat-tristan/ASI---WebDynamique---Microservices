@@ -23,7 +23,7 @@ public class UserController {
     }
 
     @RequestMapping(value = {"/login"}, method = RequestMethod.POST)
-    public ResponseEntity<User> loginUser(Map<String, String> loginDetails, HttpSession session) {
+    public ResponseEntity<Void> loginUser(Map<String, String> loginDetails, HttpSession session) {
         String username = loginDetails.get("username");
         String password = loginDetails.get("password");
         User user = userService.getUserByUsername(username);
@@ -31,9 +31,7 @@ public class UserController {
             session.setAttribute("username", username);
             session.setAttribute("userId", user.getId());
             session.setAttribute("credits", user.getCredits());
-            User userResponse = user;
-            userResponse.setPassword("");
-            return new ResponseEntity<>(userResponse, HttpStatus.OK);
+            return new ResponseEntity<>(HttpStatus.OK);
         }
         return new ResponseEntity<>(HttpStatus.UNAUTHORIZED);
     }
