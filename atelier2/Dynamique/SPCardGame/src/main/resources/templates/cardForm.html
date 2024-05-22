@@ -11,25 +11,22 @@
 </div>
 <div id="cardinfo-container">
     <div id="form-tocomplete">
-        <h3>Preview carte</h3>
-        <form id="card-form">
-            <label for="form-name">Name</label>
         <h3>Add a card</h3>
-        <form th:action="@{/addCards}" th:object="${cardForm}" method="POST">
+        <form action="/addCards" method="POST">
         <label for="form-name">Name</label>
             <div >
                 <input id="form-name" class="inputsform" type="text"
-                       placeholder="Card name..." th:field="*{name}">
+                       placeholder="Card name...">
             </div>
             <label  for="form-description">Description</label>
             <div >
                 <input id="form-description" class="inputsform" type="text"
-                       placeholder="Card description..." th:field="*{description}">
+                       placeholder="Card description...">
             </div>
             <label  for="form-imgUrl">Image URL</label>
             <div >
                 <input  id="form-imgUrl" class="inputsform" type="text"
-                        placeholder="Card description..." th:field="*{imgUrl}">
+                        placeholder="Card description...">
             </div>
             <label  for="form-family">Family</label>
             <div >
