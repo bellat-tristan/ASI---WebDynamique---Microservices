@@ -96,4 +96,14 @@ public class ViewController {
     public String login() {
         return "login"; // Retourne le nom de la vue de la page de connexion (login.html)
     }
+
+    @RequestMapping(value = { "/buycard"}, method = RequestMethod.GET)
+    public String buycard(Model model) {
+        return "Buy";
+    }
+
+    @RequestMapping(value = { "/sellcard"}, method = RequestMethod.GET)
+    public String sellcard(Model model) {
+        return "Sell";
+    }
 }
