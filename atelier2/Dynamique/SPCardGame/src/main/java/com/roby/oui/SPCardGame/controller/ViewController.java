@@ -76,15 +76,7 @@ public class ViewController {
     }
 
 
-    /*@RequestMapping(value = {"/addCards"}, method = RequestMethod.POST)
-    public String addCard(Model model, @ModelAttribute("cardForm") CardFormDTO cardForm, HttpSession session) {
-        Card p = cardDao.addCard(cardForm.getName(), cardForm.getDescription(), cardForm.getImgUrl(), cardForm.getFamily(), cardForm.getAffinity(), cardForm.getHp(), cardForm.getEnergy(), cardForm.getAttack(), cardForm.getDefence(), cardForm.getPrix());
-        model.addAttribute("myCard", p);
-        model.addAttribute("pageTitle", "Add card");
-        String username = (String) session.getAttribute("username");
-        model.addAttribute("username", username != null ? username : "Connectez-vous");
-        return "cardView";
-    }*/
+
 
     @RequestMapping(value = { "/listAllCardView"}, method = RequestMethod.GET)
     public String viewList(Model model, HttpSession session) {

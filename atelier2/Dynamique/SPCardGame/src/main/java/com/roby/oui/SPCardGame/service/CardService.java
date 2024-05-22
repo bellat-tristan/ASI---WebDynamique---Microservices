@@ -44,10 +44,12 @@ public class CardService {
         if (userOpt.isPresent() && cardOpt.isPresent()) {
             User user = userOpt.get();
             Card card = cardOpt.get();
-            Optional<User> seller = userRepository.findById(card.getOwner().getId());
-            if (!seller.isEmpty()){
-                seller.get().setCredits(seller.get().getCredits() + card.getPrix());
-                userRepository.save(seller.get());
+            if (card.getOwner() != null) {
+                Optional<User> seller = userRepository.findById(card.getOwner().getId());
+                if (seller.isPresent()) {
+                    seller.get().setCredits(seller.get().getCredits() + card.getPrix());
+                    userRepository.save(seller.get());
+                }
             }
             user.getCards().add(card);
             card.setEnVente(false);

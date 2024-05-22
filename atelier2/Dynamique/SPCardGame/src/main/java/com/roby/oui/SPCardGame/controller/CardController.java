@@ -1,6 +1,7 @@
 package com.roby.oui.SPCardGame.controller;
 
 import com.roby.oui.SPCardGame.model.Card;
+import com.roby.oui.SPCardGame.model.CardFormDTO;
 import com.roby.oui.SPCardGame.service.CardService;
 import jakarta.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -44,5 +45,28 @@ public class CardController {
     public ResponseEntity<List<Card>> getSellingCards() {
         List<Card> cards = cardService.getSellingCards();
         return new ResponseEntity<>(cards, HttpStatus.OK);
+    }
+
+    @PostMapping("/addCards")
+    public ResponseEntity<Card> addCard(@RequestBody CardFormDTO cardForm, HttpSession session) {
+        Card card = new Card();
+        card.setName(cardForm.getName());
+        card.setDescription(cardForm.getDescription());
+        card.setImgUrl(cardForm.getImgUrl());
+        card.setFamily(cardForm.getFamily());
+        card.setAffinity(cardForm.getAffinity());
+        card.setHp(cardForm.getHp());
+        card.setEnergy(cardForm.getEnergy());
+        card.setAttack(cardForm.getAttack());
+        card.setDefence(cardForm.getDefence());
+        card.setPrix(cardForm.getPrix());
+
+        Long userId = (Long) session.getAttribute("userId");
+        if (userId != null) {
+            cardService.addCardToUser(card, userId);
+            return new ResponseEntity<>(card, HttpStatus.CREATED);
+        } else {
+            return new ResponseEntity<>(HttpStatus.UNAUTHORIZED);
+        }
     }
 }
