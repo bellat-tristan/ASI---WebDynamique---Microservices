@@ -24,6 +24,10 @@ public class CardService {
         return cardRepository.findAll();
     }
 
+    public List<Card> getSellingCards() {
+        return cardRepository.findByEnVente(true);
+    }
+
     public Optional<Card> getCardByName(String name) {
         return Optional.ofNullable(cardRepository.findByName(name));
     }
@@ -34,25 +38,39 @@ public class CardService {
         return cards.get(index);
     }
 
-    public void addCardToUser(Card card) {
-        // TODO recupéré user
-        User user =  new User();
-        // -----------------
-        user.getCards().add(card);
-        user.setCredits(user.getCredits() + card.getPrix());
-        userRepository.save(user);
-    }
-    public void deleteCardToUser(Long id) {
-        // TODO recupéré user
-        User user =  new User();
-        // -----------------
-        Optional<Card> card = cardRepository.findById(id);
-        for (Card oneCard : user.getCards()){
-            if (oneCard.getId() == id){
-                user.getCards().remove(oneCard);
+    public void addCardToUser(Card card, Long userId) {
+        Optional<User> userOpt = userRepository.findById(userId);
+        if (userOpt.isPresent()) {
+            User user = userOpt.get();
+            Optional<User> seller = userRepository.findById(card.getOwner().getId());
+            if (!seller.isEmpty()){
+                seller.get().setCredits(seller.get().getCredits() + card.getPrix());
+                userRepository.save(seller.get());
             }
+            user.getCards().add(card);
+            card.setEnVente(false);
+            card.setOwner(user);
+            cardRepository.save(card);
+            user.setCredits(user.getCredits() - card.getPrix());
+            userRepository.save(user);
+        } else {
+            throw new RuntimeException("User not found");
         }
-        user.setCredits(user.getCredits() + card.get().getPrix());
-        userRepository.save(user);
+    }
+    public void deleteCardToUser(Card card, Long userId) {
+        Optional<User> userOpt = userRepository.findById(userId);
+        if (userOpt.isPresent()) {
+            User user = userOpt.get();
+            user.getCards().remove(card);
+            user.setCredits(user.getCredits() + card.getPrix());
+            userRepository.save(user);
+        } else {
+            throw new RuntimeException("User not found");
+        }
+    }
+
+    public void setIsSelling(Card card, boolean state){
+        card.setEnVente(state);
+        cardRepository.save(card);
     }
 }

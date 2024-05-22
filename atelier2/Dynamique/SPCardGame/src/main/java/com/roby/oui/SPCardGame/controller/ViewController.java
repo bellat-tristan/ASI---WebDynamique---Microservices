@@ -1,5 +1,6 @@
 package com.roby.oui.SPCardGame.controller;
 
+
 import com.roby.oui.SPCardGame.model.Card;
 import com.roby.oui.SPCardGame.model.CardFormDTO;
 import jakarta.servlet.http.HttpSession;
@@ -30,35 +31,37 @@ public class ViewController {
         model.addAttribute("pageTitle", "Accueil");
         String username = (String) session.getAttribute("username");
         model.addAttribute("username", username != null ? username : "Connectez-vous");
+        Long userId = (Long) session.getAttribute("userId");
+        model.addAttribute("userId", userId);
         return "index";
     }
 
-    @RequestMapping(value = {"/card"}, method = RequestMethod.GET)
+   /* @RequestMapping(value = {"/card"}, method = RequestMethod.GET)
     public String viewCard(Model model, HttpSession session) {
         model.addAttribute("pageTitle", "Card");
         String username = (String) session.getAttribute("username");
         model.addAttribute("username", username != null ? username : "Connectez-vous");
         return "card";
-    }
+    }*/
 
-    @RequestMapping(value = {"/form-sample"}, method = RequestMethod.GET)
+    /*@RequestMapping(value = {"/form-sample"}, method = RequestMethod.GET)
     public String viewSearchCard(Model model, HttpSession session) {
         model.addAttribute("pageTitle", "Form");
         String username = (String) session.getAttribute("username");
         model.addAttribute("username", username != null ? username : "Connectez-vous");
         return "form-sample";
-    }
+    }*/
 
-    @RequestMapping(value = {"/view"}, method = RequestMethod.GET)
+    /*@RequestMapping(value = {"/view"}, method = RequestMethod.GET)
     public String view(Model model, HttpSession session) {
         model.addAttribute("myCard", cardDao.getRandomCard());
         model.addAttribute("pageTitle", "View");
         String username = (String) session.getAttribute("username");
         model.addAttribute("username", username != null ? username : "Connectez-vous");
         return "cardView";
-    }
+    }*/
 
-    @RequestMapping(value = {"/addCard"}, method = RequestMethod.GET)
+    @RequestMapping(value = {"/addCardView"}, method = RequestMethod.GET)
     public String addCard(Model model, HttpSession session) {
         CardFormDTO cardForm = new CardFormDTO();
         model.addAttribute("cardForm", cardForm);
@@ -68,7 +71,8 @@ public class ViewController {
         return "cardForm";
     }
 
-    @RequestMapping(value = {"/addCard"}, method = RequestMethod.POST)
+
+    /*@RequestMapping(value = {"/addCards"}, method = RequestMethod.POST)
     public String addCard(Model model, @ModelAttribute("cardForm") CardFormDTO cardForm, HttpSession session) {
         Card p = cardDao.addCard(cardForm.getName(), cardForm.getDescription(), cardForm.getImgUrl(), cardForm.getFamily(), cardForm.getAffinity(), cardForm.getHp(), cardForm.getEnergy(), cardForm.getAttack(), cardForm.getDefence(), cardForm.getPrix());
         model.addAttribute("myCard", p);
@@ -76,9 +80,9 @@ public class ViewController {
         String username = (String) session.getAttribute("username");
         model.addAttribute("username", username != null ? username : "Connectez-vous");
         return "cardView";
-    }
+    }*/
 
-    @RequestMapping(value = { "/list"}, method = RequestMethod.GET)
+    @RequestMapping(value = { "/listAllCardView"}, method = RequestMethod.GET)
     public String viewList(Model model, HttpSession session) {
         model.addAttribute("cardList", cardDao.getCardList());
         model.addAttribute("pageTitle", "List");
@@ -87,7 +91,7 @@ public class ViewController {
         return "cardViewList";
     }
 
-    @RequestMapping(value = { "/user"}, method = RequestMethod.GET)
+    @RequestMapping(value = { "/userView"}, method = RequestMethod.GET)
     public String user(Model model, HttpSession session) {
         String username = (String) session.getAttribute("username");
         model.addAttribute("username", username != null ? username : "Connectez-vous");

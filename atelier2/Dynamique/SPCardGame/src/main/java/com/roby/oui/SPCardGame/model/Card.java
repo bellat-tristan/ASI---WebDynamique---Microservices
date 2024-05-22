@@ -25,6 +25,9 @@ public class Card {
     private int prix;
     private boolean enVente;
 
+    @ManyToOne
+    @JoinColumn(name = "userId", referencedColumnName = "id")
+    private User owner;
 
 
     public Card(String name, String description, String imgUrl, String family, String affinity, int hp, int energy, int attack, int defence, int prix) {
