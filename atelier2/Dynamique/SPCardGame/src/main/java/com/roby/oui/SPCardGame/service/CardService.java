@@ -38,10 +38,12 @@ public class CardService {
         return cards.get(index);
     }
 
-    public void addCardToUser(Card card, Long userId) {
+    public void addCardToUser(Long idCard, Long userId) {
         Optional<User> userOpt = userRepository.findById(userId);
-        if (userOpt.isPresent()) {
+        Optional<Card> cardOpt = cardRepository.findById(idCard);
+        if (userOpt.isPresent() && cardOpt.isPresent()) {
             User user = userOpt.get();
+            Card card = cardOpt.get();
             Optional<User> seller = userRepository.findById(card.getOwner().getId());
             if (!seller.isEmpty()){
                 seller.get().setCredits(seller.get().getCredits() + card.getPrix());
@@ -69,8 +71,14 @@ public class CardService {
         }
     }
 
-    public void setIsSelling(Card card, boolean state){
-        card.setEnVente(state);
-        cardRepository.save(card);
+    public void setIsSelling(Long idCard, boolean state){
+        Optional<Card> cardOpt = cardRepository.findById(idCard);
+        if (cardOpt.isPresent()) {
+            Card card = cardOpt.get();
+            card.setEnVente(state);
+            cardRepository.save(card);
+        } else {
+            throw new RuntimeException("User not found");
+        }
     }
 }
