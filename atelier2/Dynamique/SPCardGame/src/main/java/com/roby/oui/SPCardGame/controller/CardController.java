@@ -19,18 +19,18 @@ public class CardController {
     private CardService cardService;
 
     @RequestMapping(value = {"/buy"}, method = RequestMethod.POST)
-    public ResponseEntity<Card> buyCard(Long idCard, HttpSession session) {
+    public ResponseEntity<Boolean> buyCard(@RequestParam Long idCard, HttpSession session) {
         Long userId = (Long) session.getAttribute("userId");
         if (userId != null) {
-            cardService.addCardToUser(idCard, userId);
-            return new ResponseEntity<>(HttpStatus.CREATED);
+            Boolean res = cardService.addCardToUser(idCard, userId);
+            return new ResponseEntity<>(res, HttpStatus.CREATED);
         } else {
             return new ResponseEntity<>(HttpStatus.UNAUTHORIZED);
         }
     }
 
     @RequestMapping(value = {"/sell"}, method = RequestMethod.POST)
-    public ResponseEntity<Void> sellCard(Long idCard, boolean state) {
+    public ResponseEntity<Void> sellCard( @RequestParam Long idCard, boolean state) {
         cardService.setIsSelling(idCard, state);
         return new ResponseEntity<>(HttpStatus.NO_CONTENT);
     }
@@ -47,8 +47,9 @@ public class CardController {
         return new ResponseEntity<>(cards, HttpStatus.OK);
     }
 
-    @PostMapping("/addCards")
-    public ResponseEntity<Card> addCard(@RequestBody Card card, HttpSession session) {
+
+    @RequestMapping(value = {"/addCards"}, method = RequestMethod.POST)
+    public ResponseEntity<Card> addCard(Card card, HttpSession session) {
         Long userId = (Long) session.getAttribute("userId");
         if (userId != null) {
             cardService.createCard(card, userId);

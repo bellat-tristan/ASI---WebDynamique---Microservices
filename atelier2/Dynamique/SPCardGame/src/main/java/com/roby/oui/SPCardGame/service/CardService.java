@@ -13,6 +13,7 @@ import java.util.Random;
 
 @Service
 public class CardService {
+
     @Autowired
     private CardRepository cardRepository;
     @Autowired
@@ -32,36 +33,39 @@ public class CardService {
         return Optional.ofNullable(cardRepository.findByName(name));
     }
 
-    public Card getRandomCard() {
-        List<Card> cards = cardRepository.findAll();
-        int index = randomGenerator.nextInt(cards.size());
-        return cards.get(index);
-    }
 
-    public void addCardToUser(Long idCard, Long userId) {
+    public Boolean addCardToUser(Long idCard, Long userId) {
         Optional<User> userOpt = userRepository.findById(userId);
         Optional<Card> cardOpt = cardRepository.findById(idCard);
         if (userOpt.isPresent() && cardOpt.isPresent()) {
             User user = userOpt.get();
             Card card = cardOpt.get();
-            if (card.getOwner() != null) {
-                Optional<User> seller = userRepository.findById(card.getOwner().getId());
-                if (seller.isPresent()) {
-                    seller.get().setCredits(seller.get().getCredits() + card.getPrix());
-                    userRepository.save(seller.get());
+            // ICI SI JE TROUVE PAS LE VENDEUR; JE DONNE PAS LES SOUS
+            if (user.getCredits() >= card.getPrix()){
+                if (card.getOwner() != null) {
+                    Optional<User> seller = userRepository.findById(card.getOwner().getId());
+                    if (seller.isPresent()) {
+                        seller.get().setCredits(seller.get().getCredits() + card.getPrix());
+                        userRepository.save(seller.get());
+                    }
                 }
+                user.getCards().add(card);
+                card.setEnVente(false);
+                card.setOwner(user);
+                cardRepository.save(card);
+                user.setCredits(user.getCredits() - card.getPrix());
+                userRepository.save(user);
+                return true;
             }
-            user.getCards().add(card);
-            card.setEnVente(false);
-            card.setOwner(user);
-            cardRepository.save(card);
-            user.setCredits(user.getCredits() - card.getPrix());
-            userRepository.save(user);
+            System.out.println("L'utilisateur n'a pas assez d'argent");
+            return false;
+
         } else {
             throw new RuntimeException("User not found");
         }
     }
-    public void deleteCardToUser(Card card, Long userId) {
+
+    public void deleteCardFromUser(Card card, Long userId) {
         Optional<User> userOpt = userRepository.findById(userId);
         if (userOpt.isPresent()) {
             User user = userOpt.get();
@@ -73,23 +77,25 @@ public class CardService {
         }
     }
 
-    public void setIsSelling(Long idCard, boolean state){
+    public void setIsSelling(Long idCard, boolean state) {
         Optional<Card> cardOpt = cardRepository.findById(idCard);
         if (cardOpt.isPresent()) {
             Card card = cardOpt.get();
             card.setEnVente(state);
             cardRepository.save(card);
         } else {
-            throw new RuntimeException("User not found");
+            throw new RuntimeException("Card not found");
         }
     }
-    public void createCard(Card card, Long userId){
+
+    public void createCard(Card card, Long userId) {
         Optional<User> userOpt = userRepository.findById(userId);
         if (userOpt.isPresent()) {
             User user = userOpt.get();
             card.setOwner(user);
             card.setEnVente(false);
         } else {
+            //A la création, je ne dois pas passer pas le else, et je dois affecter un setOwner dans les cas
             card.setEnVente(true);
         }
         cardRepository.save(card);

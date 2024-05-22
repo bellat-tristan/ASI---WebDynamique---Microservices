@@ -16,7 +16,7 @@ function callback(response){
 
     for(const card of cardlist){
         let clone = document.importNode(template.content, true);
-        if(card.enVente == true)
+        if(card.enVente == false)
         {
             newContent = clone.firstElementChild.innerHTML
                 .replace(/{{CardName}}/g, card.name)
@@ -29,7 +29,8 @@ function callback(response){
                 .replace(/{{CardEnergy}}/g, card.energy)
                 .replace(/{{CardDefence}}/g, card.defence)
                 .replace(/{{CardAttack}}/g, card.attack)
-                .replace(/{{CardPrice}}/g, card.prix);
+                .replace(/{{CardPrice}}/g, card.prix)
+                .replace(/{{CardId}}/g, card.id);
             clone.firstElementChild.innerHTML = newContent;
 
             let cardContainer = document.querySelector("#table-body");
@@ -48,7 +49,21 @@ function PreviewCard(source)
     let imageElement = document.querySelector("#imagePreview");
     imageElement.src = source;
 }
-function SellCard()
-{
 
+function sellCard(idCard, state) {
+    const POST_API_URL = `http://localhost:8080/cards/sell?idCard=${idCard}&state=${state}`;
+    let context = {
+        method: 'POST',
+    };
+
+    fetch(POST_API_URL, context)
+        .then(response => {
+            if (response.status === 204) {
+                console.log("Card sale state updated successfully.");
+                location.reload()
+            } else {
+                console.log("Failed to update card sale state.");
+            }
+        })
+        .catch(error => console.error("Error:", error));
 }

@@ -16,14 +16,14 @@ public class UserController {
     @Autowired
     private UserService userService;
 
-    @PostMapping("/register")
-    public ResponseEntity<User> registerUser(@RequestBody User user) {
-        User createdUser = userService.createUser(user);
+    @RequestMapping(value = {"/register"}, method = RequestMethod.POST)
+    public ResponseEntity<Boolean> registerUser(@RequestBody User user) {
+        Boolean createdUser = userService.createUser(user);
         return new ResponseEntity<>(createdUser, HttpStatus.CREATED);
     }
 
-    @PostMapping("/login")
-    public ResponseEntity<User> loginUser(@RequestBody Map<String, String> loginDetails, HttpSession session) {
+    @RequestMapping(value = {"/login"}, method = RequestMethod.POST)
+    public ResponseEntity<Void> loginUser(@RequestBody Map<String, String> loginDetails, HttpSession session) {
         String username = loginDetails.get("username");
         String password = loginDetails.get("password");
         User user = userService.getUserByUsername(username);
