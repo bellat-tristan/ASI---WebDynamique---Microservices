@@ -1,5 +1,6 @@
 package com.roby.oui.SPCardGame.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.*;
 import jakarta.persistence.*;
 
@@ -27,8 +28,8 @@ public class Card {
 
     @ManyToOne
     @JoinColumn(name = "userId", referencedColumnName = "id")
+    @JsonIgnoreProperties({"cards"}) // Ignore the 'cards' field in User during serialization
     private User owner;
-
 
     public Card(String name, String description, String imgUrl, String family, String affinity, int hp, int energy, int attack, int defence, int prix) {
         this.name = name;
