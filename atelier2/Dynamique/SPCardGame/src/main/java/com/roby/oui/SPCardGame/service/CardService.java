@@ -42,16 +42,19 @@ public class CardService {
         Optional<User> userOpt = userRepository.findById(userId);
         if (userOpt.isPresent()) {
             User user = userOpt.get();
-            Optional<User> seller = userRepository.findById(card.getOwner().getId());
-            if (!seller.isEmpty()){
-                seller.get().setCredits(seller.get().getCredits() + card.getPrix());
-                userRepository.save(seller.get());
+
+            if (card.getOwner() != null) {
+                Optional<User> seller = userRepository.findById(card.getOwner().getId());
+                if (seller.isPresent()) {
+                    seller.get().setCredits(seller.get().getCredits() + card.getPrix());
+                    userRepository.save(seller.get());
+                }
             }
-            user.getCards().add(card);
-            card.setEnVente(false);
+
             card.setOwner(user);
+            card.setEnVente(false);
             cardRepository.save(card);
-            user.setCredits(user.getCredits() - card.getPrix());
+            user.getCards().add(card);
             userRepository.save(user);
         } else {
             throw new RuntimeException("User not found");
