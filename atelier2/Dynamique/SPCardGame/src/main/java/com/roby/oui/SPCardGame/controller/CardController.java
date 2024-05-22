@@ -45,4 +45,6 @@ public class CardController {
         List<Card> cards = cardService.getSellingCards();
         return new ResponseEntity<>(cards, HttpStatus.OK);
     }
+
+
 }

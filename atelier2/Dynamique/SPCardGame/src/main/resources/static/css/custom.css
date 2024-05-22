@@ -54,10 +54,25 @@ body {
     flex-wrap: wrap; /* Ajoutez cette ligne pour permettre le retour à la ligne des éléments si nécessaire */
 }
 
-.headertocenter {
+.connexion {
     display: flex; /* Ajoutez cette ligne pour aligner horizontalement les éléments */
     align-items: center;
 }
+
+#connexion{
+    display: flex;
+}
+
+.headertocenter {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.headertocenter img {
+    margin-bottom: 5px; /* Ajoute un espace entre l'image et le texte */
+}
+
 
 .container {
     background-color: lightgrey; /* Couleur de fond gris clair */
