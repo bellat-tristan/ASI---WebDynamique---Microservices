@@ -35,7 +35,7 @@ public class CardController {
         return new ResponseEntity<>(HttpStatus.NO_CONTENT);
     }
 
-    @RequestMapping(value = {"/cards"}, method = RequestMethod.GET)
+    @RequestMapping(value = {"/listAll"}, method = RequestMethod.GET)
     public ResponseEntity<List<Card>> getAllCards() {
         List<Card> cards = cardService.getAllCards();
         return new ResponseEntity<>(cards, HttpStatus.OK);
@@ -47,20 +47,8 @@ public class CardController {
         return new ResponseEntity<>(cards, HttpStatus.OK);
     }
 
-    @RequestMapping(value = {"/addCards"}, method = RequestMethod.POST)
-    public ResponseEntity<Card> addCard(Card card, HttpSession session) {
-/*        Card card = new Card();
-        card.setName(cardForm.getName());
-        card.setDescription(cardForm.getDescription());
-        card.setImgUrl(cardForm.getImgUrl());
-        card.setFamily(cardForm.getFamily());
-        card.setAffinity(cardForm.getAffinity());
-        card.setHp(cardForm.getHp());
-        card.setEnergy(cardForm.getEnergy());
-        card.setAttack(cardForm.getAttack());
-        card.setDefence(cardForm.getDefence());
-        card.setPrix(cardForm.getPrix());*/
-
+    @PostMapping("/addCards")
+    public ResponseEntity<Card> addCard(@RequestBody Card card, HttpSession session) {
         Long userId = (Long) session.getAttribute("userId");
         if (userId != null) {
             cardService.createCard(card, userId);
