@@ -23,11 +23,11 @@ public class CardDao {
 
     private void createCardList() {
 
-        Card p1=new Card("John", "Test", "https://www.pokemon.com/static-assets/content-assets/cms2-fr-fr/img/cards/web/SVP/SVP_FR_47.png","Feu","affinity",23,34,15,29, 5.50F);
-        Card p2=new Card("Roberto", "Test", "https://www.pokemon.com/static-assets/content-assets/cms2-fr-fr/img/cards/web/SVP/SVP_FR_47.png","Feu","affinity",23,34,15,29, 5.50F);
-        Card p3=new Card("Anna", "Test", "https://www.pokemon.com/static-assets/content-assets/cms2-fr-fr/img/cards/web/SVP/SVP_FR_47.png","Feu","affinity",23,34,15,29, 5.50F);
-        Card p4=new Card("Angry Joe","Test", "https://www.pokemon.com/static-assets/content-assets/cms2-fr-fr/img/cards/web/SVP/SVP_FR_47.png","Feu","affinity",23,34,15,29, 5.50F);
-        Card p5=new Card("Ursula", "Test", "https://www.pokemon.com/static-assets/content-assets/cms2-fr-fr/img/cards/web/SVP/SVP_FR_47.png","Feu","affinity",23,34,15,29, 5.50F);
+        Card p1=new Card("John", "Test", "https://www.pokemon.com/static-assets/content-assets/cms2-fr-fr/img/cards/web/SVP/SVP_FR_47.png","Feu","affinity",23,34,15,29, 20F);
+        Card p2=new Card("Roberto", "Test", "https://www.pokemon.com/static-assets/content-assets/cms2-fr-fr/img/cards/web/SVP/SVP_FR_47.png","Feu","affinity",23,34,15,29, 30F);
+        Card p3=new Card("Anna", "Test", "https://www.pokemon.com/static-assets/content-assets/cms2-fr-fr/img/cards/web/SVP/SVP_FR_47.png","Feu","affinity",23,34,15,29, 5F);
+        Card p4=new Card("Angry Joe","Test", "https://www.pokemon.com/static-assets/content-assets/cms2-fr-fr/img/cards/web/SVP/SVP_FR_47.png","Feu","affinity",23,34,15,29, 34F);
+        Card p5=new Card("Ursula", "Test", "https://www.pokemon.com/static-assets/content-assets/cms2-fr-fr/img/cards/web/SVP/SVP_FR_47.png","Feu","affinity",23,34,15,29, 100F);
 
         myCardList.add(p1);
         myCardList.add(p2);

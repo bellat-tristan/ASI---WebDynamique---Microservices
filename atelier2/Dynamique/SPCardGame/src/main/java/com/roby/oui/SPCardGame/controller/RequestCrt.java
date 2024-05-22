@@ -93,4 +93,7 @@ public class RequestCrt {
         model.addAttribute("username", username != null ? username : "Connectez-vous");
         return "user";
     }
+    public String login() {
+        return "login"; // Retourne le nom de la vue de la page de connexion (login.html)
+    }
 }
