@@ -43,7 +43,6 @@ body {
     width: 400px;
     margin-right: 100px;
 }
-
 .header {
     display: flex;
     justify-content: space-between;
@@ -52,16 +51,17 @@ body {
     padding: 20px;
     width: 100%;
     box-sizing: border-box;
+    flex-wrap: wrap; /* Ajoutez cette ligne pour permettre le retour à la ligne des éléments si nécessaire */
 }
 
-.headertocenter img {
-    margin-right: 10px;
-    width: 100px;
+.headertocenter {
+    display: flex; /* Ajoutez cette ligne pour aligner horizontalement les éléments */
+    align-items: center;
 }
 
 .container {
-    background-color: lightgrey;
-    padding: 20px;
+    background-color: lightgrey; /* Couleur de fond gris clair */
+    padding: 10px; /* Réduire le padding */
     border-radius: 8px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     width: 300px;
@@ -106,4 +106,73 @@ button:hover {
     display: flex;
     justify-content: center;
     align-items: center;
+}
+
+
+#cardinfo-container {
+    display: flex;
+    justify-content: space-around;
+    align-items: flex-start;
+}
+
+
+
+.inputsform {
+    width: 100%;
+    padding: 5px; /* Réduire le padding */
+    margin-bottom: 10px; /* Réduire l'espace entre les champs */
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+    transition: border-color 0.3s ease;
+}
+
+.inputsform:focus {
+    outline: none; /* Supprime le contour lorsque le champ est sélectionné */
+    border-color: #007bff; /* Change la couleur de la bordure lorsqu'un champ est sélectionné */
+}
+
+.inputsform::placeholder {
+    color: #999; /* Couleur du texte de l'indicateur de saisie */
+}
+
+.inputsform[type="submit"] {
+    background-color: #007bff;
+    border: none;
+    color: white;
+    cursor: pointer;
+    transition: background-color 0.3s ease; /* Ajoute une transition pour l'animation */
+}
+
+.inputsform[type="submit"]:hover {
+    background-color: #0056b3; /* Change la couleur du fond lorsqu'un bouton est survolé */
+}
+
+#card-preview {
+    flex: 2;
+    margin-right: 20px;
+    max-width: 400px;
+}
+
+#sliderHpValue,
+#sliderEnergyValue,
+#sliderattackValue,
+#sliderdefenseValue {
+    margin-left: 10px; /* Décaler la valeur des échelles vers la droite */
+}
+
+#form-tocomplete {
+    flex: 1;
+    margin-right: 20px;
+    max-width: 400px;
+}
+
+.sliders {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.slidersValue {
+    font-size: 14px;
 }

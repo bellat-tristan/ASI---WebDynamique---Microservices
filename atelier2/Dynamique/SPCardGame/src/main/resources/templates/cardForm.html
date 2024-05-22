@@ -1,85 +1,88 @@
+<!DOCTYPE HTML>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8" />
     <title>Welcome</title>
     <link rel="stylesheet" type="text/css" href="/css/custom.css" />
-
 </head>
 <body>
 <div th:replace="~{fragments/header :: header}">
     <h1> THIS IS A DEFAULT HEADER</h1>
 </div>
-<form th:action="@{/addCard}"
-      th:object="${cardForm}" method="POST">
-    <fieldset >
-        <legend >Add your Card ! </legend>
-        <label for="form-name">Name</label>
-        <div >
-            <input id="form-name" class="inputsform" type="text"
-                   placeholder="Card name..." th:field="*{name}">
-        </div>
-        <label  for="form-description">Description</label>
-        <div >
-            <input id="form-description" class="inputsform" type="text"
-                   placeholder="Card description..." th:field="*{description}">
-        </div>
-        <label  for="form-imgUrl">Image URL</label>
-        <div >
-            <input  id="form-imgUrl" class="inputsform" type="text"
-                    placeholder="Card description..." th:field="*{imgUrl}">
-        </div>
-        <label  for="form-family">Family</label>
-        <div >
-            <select  id="form-family" class="inputsform" name="family">
-                <option value="warrior">Warrior</option>
-                <option value="mage">Mage</option>
-                <option value="rogue">Rogue</option>
-                <option value="knight">Knight</option>
-                <option value="cleric">Cleric</option>
-                <option value="bard">Bard</option>
+<div id="cardinfo-container">
+    <div id="form-tocomplete">
+        <h3>Preview carte</h3>
+        <form th:action="@{/addCard}"
+              th:object="${cardForm}" method="POST">
+            <label for="form-name">Name</label>
+            <div >
+                <input id="form-name" class="inputsform" type="text"
+                       placeholder="Card name..." th:field="*{name}">
+            </div>
+            <label  for="form-description">Description</label>
+            <div >
+                <input id="form-description" class="inputsform" type="text"
+                       placeholder="Card description..." th:field="*{description}">
+            </div>
+            <label  for="form-imgUrl">Image URL</label>
+            <div >
+                <input  id="form-imgUrl" class="inputsform" type="text"
+                        placeholder="Card description..." th:field="*{imgUrl}">
+            </div>
+            <label  for="form-family">Family</label>
+            <div >
+                <select  id="form-family" class="inputsform" name="family">
+                    <option value="warrior">Warrior</option>
+                    <option value="mage">Mage</option>
+                    <option value="rogue">Rogue</option>
+                    <option value="knight">Knight</option>
+                    <option value="cleric">Cleric</option>
+                    <option value="bard">Bard</option>
 
-            </select>
-        </div>
-        <label  for="form-rarity">Rarity</label>
-        <div >
-            <select  id="form-rarity" class="inputsform" name="rarity">
-                <option value="common">Common</option>
-                <option value="uncommon">Uncommon</option>
-                <option value="rare">Rare</option>
-                <option value="ultra_rare">Ultra Rare</option>
-            </select>
-        </div>
-        <label for="form-sliderhp">HP</label>
-        <div>
-            <input type="range" id="form-sliderhp" name="sliderhp" min="0" max="100" step="1" value="50" oninput="updateValue('sliderHpValue',this.value)">
-            <div class="inputsform" id="sliderHpValue">50</div>
-        </div>
-        <label for="form-sliderenergy">Energy</label>
-        <div>
-            <input type="range" id="form-sliderenergy" name="sliderenergy" min="0" max="100" step="1" value="50" oninput="updateValue('sliderEnergyValue',this.value)">
-            <div class="inputsform" id="sliderEnergyValue">50</div>
-        </div>
-        <label for="form-sliderattack">Energy</label>
-        <div>
-            <input type="range" id="form-sliderattack" name="sliderattack" min="0" max="100" step="1" value="50" oninput="updateValue('sliderattackValue',this.value)">
-            <div class="inputsform" id="sliderattackValue">50</div>
-        </div>
-        <label for="form-sliderdefense">Energy</label>
-        <div>
-            <input type="range" id="form-sliderdefense" name="sliderdefense" min="0" max="100" step="1" value="50" oninput="updateValue('sliderdefenseValue',this.value)">
-            <div class="inputsform" id="sliderdefenseValue">50</div>
-        </div>
-        <div>
-            <label for="form-price">Price</label>
-            <input type="number" class="inputsform" id="form-price" name="price" min="0" max="1000" step="0.01" placeholder="Enter price in €">
-        </div>
-        <div >
-            <input type="submit"  class="uk-button uk-button-default" value="Create" />
-        </div>
-
-    </fieldset>
-</form>
-
+                </select>
+            </div>
+            <label  for="form-rarity">Rarity</label>
+            <div >
+                <select  id="form-rarity" class="inputsform" name="rarity">
+                    <option value="common">Common</option>
+                    <option value="uncommon">Uncommon</option>
+                    <option value="rare">Rare</option>
+                    <option value="ultra_rare">Ultra Rare</option>
+                </select>
+            </div>
+            <label for="form-sliderhp">HP</label>
+            <div class="sliders">
+                <input type="range" id="form-sliderhp" name="sliderhp" min="0" max="100" step="1" value="50" oninput="updateValue('sliderHpValue',this.value)">
+                <div class="slidersValue" id="sliderHpValue">50</div>
+            </div>
+            <label for="form-sliderenergy">Energy</label>
+            <div class="sliders">
+                <input type="range" id="form-sliderenergy" name="sliderenergy" min="0" max="100" step="1" value="50" oninput="updateValue('sliderEnergyValue',this.value)">
+                <div class="slidersValue" id="sliderEnergyValue">50</div>
+            </div>
+            <label for="form-sliderattack">Attack</label>
+            <div class="sliders">
+                <input type="range" id="form-sliderattack" name="sliderattack" min="0" max="100" step="1" value="50" oninput="updateValue('sliderattackValue',this.value)">
+                <div class="slidersValue" id="sliderattackValue">50</div>
+            </div>
+            <label for="form-sliderdefense">Defense</label>
+            <div class="sliders">
+                <input type="range" id="form-sliderdefense" name="sliderdefense" min="0" max="100" step="1" value="50" oninput="updateValue('sliderdefenseValue',this.value)">
+                <div class="slidersValue" id="sliderdefenseValue">50</div>
+            </div>
+            <div>
+                <label for="form-price">Price</label>
+                <input type="number" class="inputsform" id="form-price" name="price" min="0" max="1000" step="0.01" placeholder="Enter price in €">
+            </div>
+            <div >
+                <input type="submit"  class="uk-button uk-button-default" value="Create" />
+            </div>
+        </form>
+    </div>
+    <div id="card-preview">
+        <h3>Preview carte</h3>
+    </div>
+</div>
 </body>
 <script>
     function updateValue(id, val) {
