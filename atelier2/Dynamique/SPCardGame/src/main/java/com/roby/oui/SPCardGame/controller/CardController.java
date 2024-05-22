@@ -28,8 +28,8 @@ public class CardController {
         }
     }
 
-    @PostMapping("/sell")
-    public ResponseEntity<Void> sellCard(@RequestBody Card card, boolean state, HttpSession session) {
+    @RequestMapping(value = {"/sell"}, method = RequestMethod.POST)
+    public ResponseEntity<Void> sellCard(@RequestBody Card card, boolean state) {
         cardService.setIsSelling(card, state);
         return new ResponseEntity<>(HttpStatus.NO_CONTENT);
     }
