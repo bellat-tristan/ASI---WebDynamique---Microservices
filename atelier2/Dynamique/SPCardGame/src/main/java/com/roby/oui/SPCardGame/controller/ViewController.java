@@ -28,6 +28,8 @@ public class ViewController {
         model.addAttribute("pageTitle", "Accueil");
         String username = (String) session.getAttribute("username");
         model.addAttribute("username", username != null ? username : "Connectez-vous");
+        Long userId = (Long) session.getAttribute("userId");
+        model.addAttribute("userId", userId);
         return "index";
     }
 
