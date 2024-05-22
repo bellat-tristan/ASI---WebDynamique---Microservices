@@ -19,23 +19,23 @@ public class CardController {
     private CardService cardService;
 
     @RequestMapping(value = {"/buy"}, method = RequestMethod.POST)
-    public ResponseEntity<Card> buyCard(Card card, HttpSession session) {
+    public ResponseEntity<Card> buyCard(Long idCard, HttpSession session) {
         Long userId = (Long) session.getAttribute("userId");
         if (userId != null) {
-            cardService.addCardToUser(card, userId);
-            return new ResponseEntity<>(card, HttpStatus.CREATED);
+            cardService.addCardToUser(idCard, userId);
+            return new ResponseEntity<>(HttpStatus.CREATED);
         } else {
             return new ResponseEntity<>(HttpStatus.UNAUTHORIZED);
         }
     }
 
     @RequestMapping(value = {"/sell"}, method = RequestMethod.POST)
-    public ResponseEntity<Void> sellCard(@RequestBody Card card, boolean state) {
-        cardService.setIsSelling(card, state);
+    public ResponseEntity<Void> sellCard(Long idCard, boolean state) {
+        cardService.setIsSelling(idCard, state);
         return new ResponseEntity<>(HttpStatus.NO_CONTENT);
     }
 
-    @RequestMapping(value = {"/card"}, method = RequestMethod.GET)
+    @RequestMapping(value = {"/cards"}, method = RequestMethod.GET)
     public ResponseEntity<List<Card>> getAllCards() {
         List<Card> cards = cardService.getAllCards();
         return new ResponseEntity<>(cards, HttpStatus.OK);
