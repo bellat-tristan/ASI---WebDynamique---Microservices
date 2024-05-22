@@ -16,7 +16,7 @@ function callback(response){
 
     for(const card of cardlist){
         let clone = document.importNode(template.content, true);
-        if(card.enVente == false)
+        if(card.enVente == true)
         {
             newContent = clone.firstElementChild.innerHTML
                 .replace(/{{CardName}}/g, card.name)
