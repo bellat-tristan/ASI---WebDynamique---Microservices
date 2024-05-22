@@ -5,8 +5,8 @@
     <title>BUY cards</title>
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
-    <link rel="stylesheet" href="../lib/Semantic-UI-CSS-master/semantic.min.css">
-    <link rel="stylesheet" type="text/css" href="/css/card.css" />
+    <link rel="stylesheet" type="text/css" href="/css/custom.css" />
+    <script src="/js/header.js"></script>
 </head>
 <body onload = myfonction()>
 <div th:replace="~{fragments/header :: header}">
@@ -58,7 +58,7 @@
         <td><button onclick = "SellCard('{{CardName}}')">Sell</button></td>
     </tr>
 </template>
-<script src="/js/Sell.js"></script>
+<script src="/js/sell.js"></script>
 
 </body>
 </html>

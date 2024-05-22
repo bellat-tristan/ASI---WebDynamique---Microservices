@@ -43,6 +43,7 @@ body {
     width: 400px;
     margin-right: 100px;
 }
+
 .header {
     display: flex;
     justify-content: space-between;
@@ -73,10 +74,9 @@ body {
     margin-bottom: 5px; /* Ajoute un espace entre l'image et le texte */
 }
 
-
 .container {
-    background-color: lightgrey; /* Couleur de fond gris clair */
-    padding: 10px; /* Réduire le padding */
+    background-color: lightgrey;
+    padding: 10px;
     border-radius: 8px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     width: 300px;
@@ -97,7 +97,7 @@ input, button {
     margin: 10px 0;
     border: 1px solid #ccc;
     border-radius: 4px;
-    box-sizing: border-box; /* Ensure padding and border are included in the element's total width and height */
+    box-sizing: border-box;
 }
 
 button {
@@ -123,19 +123,16 @@ button:hover {
     align-items: center;
 }
 
-
 #cardinfo-container {
     display: flex;
     justify-content: space-around;
     align-items: flex-start;
 }
 
-
-
 .inputsform {
     width: 100%;
-    padding: 5px; /* Réduire le padding */
-    margin-bottom: 10px; /* Réduire l'espace entre les champs */
+    padding: 5px;
+    margin-bottom: 10px;
     border: 1px solid #ccc;
     border-radius: 4px;
     box-sizing: border-box;
@@ -143,12 +140,12 @@ button:hover {
 }
 
 .inputsform:focus {
-    outline: none; /* Supprime le contour lorsque le champ est sélectionné */
-    border-color: #007bff; /* Change la couleur de la bordure lorsqu'un champ est sélectionné */
+    outline: none;
+    border-color: #007bff;
 }
 
 .inputsform::placeholder {
-    color: #999; /* Couleur du texte de l'indicateur de saisie */
+    color: #999;
 }
 
 .inputsform[type="submit"] {
@@ -156,11 +153,11 @@ button:hover {
     border: none;
     color: white;
     cursor: pointer;
-    transition: background-color 0.3s ease; /* Ajoute une transition pour l'animation */
+    transition: background-color 0.3s ease;
 }
 
 .inputsform[type="submit"]:hover {
-    background-color: #0056b3; /* Change la couleur du fond lorsqu'un bouton est survolé */
+    background-color: #0056b3;
 }
 
 #card-preview {
@@ -173,7 +170,7 @@ button:hover {
 #sliderEnergyValue,
 #sliderattackValue,
 #sliderdefenseValue {
-    margin-left: 10px; /* Décaler la valeur des échelles vers la droite */
+    margin-left: 10px;
 }
 
 #form-tocomplete {
@@ -196,7 +193,7 @@ button:hover {
     display: flex;
     flex-direction: column;
     flex-wrap: wrap;
-    align-items: center; /* Centrer horizontalement les éléments */
+    align-items: center;
     gap: 20px;
 }
 
@@ -204,12 +201,12 @@ button:hover {
     display: flex;
     flex-direction: column;
     gap: 10px;
-    align-items: center; /* Centrer horizontalement les éléments */
+    align-items: center;
 }
 
 .card-description {
     margin-top: 20px;
-    text-align: center; /* Centrer le texte de la description */
+    text-align: center;
 }
 
 .cardrow {
@@ -222,11 +219,12 @@ button:hover {
 
 .cardview-details-item {
     margin: 0;
-    text-align: center; /* Centrer le texte de Family, Affinity, HP, etc. */
+    text-align: center;
 }
+
 .imageCard img {
-    max-width: 100px; /* Ajuster la largeur de l'image pour s'adapter au conteneur */
-    height: auto; /* Garder le ratio de l'image */
+    max-width: 100px;
+    height: auto;
 }
 
 .card-container{
@@ -235,4 +233,32 @@ button:hover {
     flex-wrap: wrap;
     align-items: center;
     gap: 10px;
+}
+
+.GlobalContain{
+    margin: 3%;
+    display: flex;
+    width: 100%;
+}
+
+.TabContain {
+    flex: auto;
+    max-width: 100%;
+    table-layout: auto;
+    border: 1px solid black;
+}
+.GlobalPreviewCard {
+    flex: auto;
+    max-width: 100%;
+}
+th {
+    border: 1px solid black;
+    width: 100%;
+}
+td {
+    border: 1px solid black;
+    width: 100%;
+}
+tbody{
+    max-width: 100%;
 }
