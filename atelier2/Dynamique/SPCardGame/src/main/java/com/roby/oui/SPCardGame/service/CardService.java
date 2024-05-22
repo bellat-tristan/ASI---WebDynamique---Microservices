@@ -29,6 +29,16 @@ public class CardService {
         return cardRepository.findByEnVente(true);
     }
 
+    public List<Card> getUserCards(Long userId) {
+        Optional<User> userOpt = userRepository.findById(userId);
+        if (userOpt.isPresent()){
+            User user = userOpt.get();
+            return cardRepository.findByOwner(user);
+        } else {
+            throw new RuntimeException("User not found");
+        }
+    }
+
     public Optional<Card> getCardByName(String name) {
         return Optional.ofNullable(cardRepository.findByName(name));
     }
