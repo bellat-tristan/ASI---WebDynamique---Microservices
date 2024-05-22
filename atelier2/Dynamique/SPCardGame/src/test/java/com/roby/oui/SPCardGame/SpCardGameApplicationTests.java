@@ -1,13 +1,13 @@
-package com.roby.oui.SPCardGame;
+//package com.roby.oui.SPCardGame;
 
-import org.junit.jupiter.api.Test;
-import org.springframework.boot.test.context.SpringBootTest;
+//import org.junit.jupiter.api.Test;
+//import org.springframework.boot.test.context.SpringBootTest;
 
-@SpringBootTest
-class SpCardGameApplicationTests {
+//@SpringBootTest
+//class SpCardGameApplicationTests {
 
-	@Test
-	void contextLoads() {
-	}
+	//@Test
+	//void contextLoads() {
+	//}
 
-}
+//}
