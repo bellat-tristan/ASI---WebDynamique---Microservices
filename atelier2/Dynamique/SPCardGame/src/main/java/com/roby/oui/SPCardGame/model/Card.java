@@ -22,7 +22,7 @@ public class Card {
     private int hp;
     private int energy;
     private int attack;
-    private int defence;
+    private int defense;
     private int prix;
     private boolean enVente;
 
@@ -31,7 +31,7 @@ public class Card {
     @JsonIgnoreProperties({"cards"}) // Ignore the 'cards' field in User during serialization
     private User owner;
 
-    public Card(String name, String description, String imgUrl, String family, String affinity, int hp, int energy, int attack, int defence, int prix) {
+    public Card(String name, String description, String imgUrl, String family, String affinity, int hp, int energy, int attack, int defense, int prix) {
         this.name = name;
         this.description = description;
         this.imgUrl = imgUrl;
@@ -40,7 +40,7 @@ public class Card {
         this.hp = hp;
         this.energy = energy;
         this.attack = attack;
-        this.defence = defence;
+        this.defense = defense;
         this.prix = prix;
         this.enVente = false;
     }
