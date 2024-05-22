@@ -28,8 +28,8 @@ public class CardController {
         }
     }
 
-    @PostMapping("/sell")
-    public ResponseEntity<Void> sellCard(@RequestBody Card card, boolean state, HttpSession session) {
+    @RequestMapping(value = {"/sell"}, method = RequestMethod.POST)
+    public ResponseEntity<Void> sellCard(@RequestBody Card card, boolean state) {
         cardService.setIsSelling(card, state);
         return new ResponseEntity<>(HttpStatus.NO_CONTENT);
     }
@@ -37,6 +37,12 @@ public class CardController {
     @RequestMapping(value = {"/card"}, method = RequestMethod.GET)
     public ResponseEntity<List<Card>> getAllCards() {
         List<Card> cards = cardService.getAllCards();
+        return new ResponseEntity<>(cards, HttpStatus.OK);
+    }
+
+    @RequestMapping(value = {"/sellingCards"}, method = RequestMethod.GET)
+    public ResponseEntity<List<Card>> getSellingCards() {
+        List<Card> cards = cardService.getSellingCards();
         return new ResponseEntity<>(cards, HttpStatus.OK);
     }
 }
