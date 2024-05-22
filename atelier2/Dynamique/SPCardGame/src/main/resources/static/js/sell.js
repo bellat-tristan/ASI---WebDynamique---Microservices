@@ -51,19 +51,16 @@ function PreviewCard(source)
 }
 
 function sellCard(idCard, state) {
-    const POST_API_URL = "http://localhost:8080/cards/sell";
+    const POST_API_URL = `http://localhost:8080/cards/sell?idCard=${idCard}&state=${state}`;
     let context = {
         method: 'POST',
-        headers: {
-            'Content-Type': 'application/x-www-form-urlencoded'
-        },
-        body: `idCard=${idCard}&state=${state}`
     };
 
     fetch(POST_API_URL, context)
         .then(response => {
             if (response.status === 204) {
                 console.log("Card sale state updated successfully.");
+                location.reload()
             } else {
                 console.log("Failed to update card sale state.");
             }

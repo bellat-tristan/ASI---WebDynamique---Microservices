@@ -40,7 +40,8 @@ public class CardService {
         if (userOpt.isPresent() && cardOpt.isPresent()) {
             User user = userOpt.get();
             Card card = cardOpt.get();
-            if (user.getCredits() <= card.getPrix()){
+            // ICI SI JE TROUVE PAS LE VENDEUR; JE DONNE PAS LES SOUS
+            if (user.getCredits() >= card.getPrix()){
                 if (card.getOwner() != null) {
                     Optional<User> seller = userRepository.findById(card.getOwner().getId());
                     if (seller.isPresent()) {
@@ -56,6 +57,7 @@ public class CardService {
                 userRepository.save(user);
                 return true;
             }
+            System.out.println("L'utilisateur n'a pas assez d'argent");
             return false;
 
         } else {
@@ -93,6 +95,7 @@ public class CardService {
             card.setOwner(user);
             card.setEnVente(false);
         } else {
+            //A la création, je ne dois pas passer pas le else, et je dois affecter un setOwner dans les cas
             card.setEnVente(true);
         }
         cardRepository.save(card);

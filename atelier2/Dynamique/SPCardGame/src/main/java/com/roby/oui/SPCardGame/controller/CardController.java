@@ -19,7 +19,7 @@ public class CardController {
     private CardService cardService;
 
     @RequestMapping(value = {"/buy"}, method = RequestMethod.POST)
-    public ResponseEntity<Boolean> buyCard(Long idCard, HttpSession session) {
+    public ResponseEntity<Boolean> buyCard(@RequestParam Long idCard, HttpSession session) {
         Long userId = (Long) session.getAttribute("userId");
         if (userId != null) {
             Boolean res = cardService.addCardToUser(idCard, userId);
@@ -30,7 +30,7 @@ public class CardController {
     }
 
     @RequestMapping(value = {"/sell"}, method = RequestMethod.POST)
-    public ResponseEntity<Void> sellCard(Long idCard, boolean state) {
+    public ResponseEntity<Void> sellCard( @RequestParam Long idCard, boolean state) {
         cardService.setIsSelling(idCard, state);
         return new ResponseEntity<>(HttpStatus.NO_CONTENT);
     }

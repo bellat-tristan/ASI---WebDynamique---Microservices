@@ -17,13 +17,13 @@ public class UserController {
     private UserService userService;
 
     @RequestMapping(value = {"/register"}, method = RequestMethod.POST)
-    public ResponseEntity<Boolean> registerUser(User user) {
+    public ResponseEntity<Boolean> registerUser(@RequestBody User user) {
         Boolean createdUser = userService.createUser(user);
         return new ResponseEntity<>(createdUser, HttpStatus.CREATED);
     }
 
     @RequestMapping(value = {"/login"}, method = RequestMethod.POST)
-    public ResponseEntity<Void> loginUser(Map<String, String> loginDetails, HttpSession session) {
+    public ResponseEntity<Void> loginUser(@RequestBody Map<String, String> loginDetails, HttpSession session) {
         String username = loginDetails.get("username");
         String password = loginDetails.get("password");
         User user = userService.getUserByUsername(username);
