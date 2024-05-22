@@ -54,14 +54,14 @@ public class ViewController {
         return "form-sample";
     }*/
 
-    /*@RequestMapping(value = {"/view"}, method = RequestMethod.GET)
+    @RequestMapping(value = {"/view"}, method = RequestMethod.GET)
     public String view(Model model, HttpSession session) {
         model.addAttribute("myCard", cardDao.getRandomCard());
         model.addAttribute("pageTitle", "View");
         String username = (String) session.getAttribute("username");
         model.addAttribute("username", username != null ? username : "Connectez-vous");
         return "cardView";
-    }*/
+    }
 
     @RequestMapping(value = {"/addCardView"}, method = RequestMethod.GET)
     public String addCard(Model model, HttpSession session) {
@@ -99,5 +99,15 @@ public class ViewController {
     }
     public String login() {
         return "login"; // Retourne le nom de la vue de la page de connexion (login.html)
+    }
+
+    @RequestMapping(value = { "/buycard"}, method = RequestMethod.GET)
+    public String buycard(Model model) {
+        return "Buy";
+    }
+
+    @RequestMapping(value = { "/sellcard"}, method = RequestMethod.GET)
+    public String sellcard(Model model) {
+        return "Sell";
     }
 }
