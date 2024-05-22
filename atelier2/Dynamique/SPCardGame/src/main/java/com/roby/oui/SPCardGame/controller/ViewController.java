@@ -19,22 +19,8 @@ public class ViewController {
     @Autowired
     private CardDao cardDao;
 
-    @Value("${welcome.message}")
-    private String message;
-
-    private static String messageLocal = "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.";
-
     @RequestMapping(value = {"/", "/index"}, method = RequestMethod.GET)
     public String index(Model model, HttpSession session) {
-        model.addAttribute("message", message);
-        model.addAttribute("messageLocal", messageLocal);
-        model.addAttribute("pageTitle", "Accueil");
-        String username = (String) session.getAttribute("username");
-        model.addAttribute("username", username != null ? username : "Connectez-vous");
-        Long userId = (Long) session.getAttribute("userId");
-        model.addAttribute("userId", userId);
-        Integer credits = (Integer) session.getAttribute("credits");
-        model.addAttribute("credits", credits != null ? credits : 0);
         return "index";
     }
 
@@ -56,41 +42,21 @@ public class ViewController {
 
     @RequestMapping(value = {"/view"}, method = RequestMethod.GET)
     public String view(Model model, HttpSession session) {
-        model.addAttribute("myCard", cardDao.getRandomCard());
-        model.addAttribute("pageTitle", "View");
-        String username = (String) session.getAttribute("username");
-        model.addAttribute("username", username != null ? username : "Connectez-vous");
         return "cardView";
     }
 
     @RequestMapping(value = {"/addCardView"}, method = RequestMethod.GET)
     public String addCard(Model model, HttpSession session) {
-        CardFormDTO cardForm = new CardFormDTO();
-        model.addAttribute("cardForm", cardForm);
-        model.addAttribute("pageTitle", "Add card");
-        String username = (String) session.getAttribute("username");
-        model.addAttribute("username", username != null ? username : "Connectez-vous");
-        Integer credits = (Integer) session.getAttribute("credits");
-        model.addAttribute("credits", credits);
         return "cardForm";
     }
 
-
-
-
     @RequestMapping(value = { "/listAllCardView"}, method = RequestMethod.GET)
     public String viewList(Model model, HttpSession session) {
-        model.addAttribute("cardList", cardDao.getCardList());
-        model.addAttribute("pageTitle", "List");
-        String username = (String) session.getAttribute("username");
-        model.addAttribute("username", username != null ? username : "Connectez-vous");
         return "cardViewList";
     }
 
     @RequestMapping(value = { "/userView"}, method = RequestMethod.GET)
     public String user(Model model, HttpSession session) {
-        String username = (String) session.getAttribute("username");
-        model.addAttribute("username", username != null ? username : "Connectez-vous");
         return "user";
     }
     public String login() {
