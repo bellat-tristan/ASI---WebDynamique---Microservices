@@ -5,38 +5,42 @@
   <title>Welcome</title>
   <link rel="stylesheet" type="text/css" href="/css/custom.css" />
 </head>
-<body>
+<body onload = myfonction()>
 <div th:replace="~{fragments/header :: header}">
   <h1> THIS IS A DEFAULT HEADER</h1>
 </div>
 
 
 
-  <div th:each="card : ${cardList}">
+<div id="cardListContainer">
 
-    <div class="card-info">
-      <h3 class="cardview" th:utext="${card.name}">...</h3>
-      <div class="card-container">
-        <img class="cardview" th:src="${card.imgUrl}" alt="">
-        <div>
-          <div class="cardview">
-            <div class="cardrow">
-              <h5 th:text="${card.family}"></h5>
-              <h5 th:text="${card.affinity}"></h5>
-            </div>
-            <div class="cardrow">
-              <h5 th:text="'HP: ' + ${card.hp}"></h5>
-              <h5 th:text="'Energy: ' + ${card.energy}"></h5>
-              <h5 th:text="'Attack: ' + ${card.attack}"></h5>
-              <h5 th:text="'Defense: ' + ${card.defence}"></h5>
-            </div>
+</div>
+
+<template id="cardTemplate">
+  <div class="card-info">
+    <h3 class="cardview">{{cardviewTitle}}</h3>
+    <div class="card-container">
+      <img class="cardview" src='{{cardviewImg}}' alt="">
+      <div>
+        <div class="cardview">
+          <div class="cardrow">
+            <h5>{{cardFamily}}</h5>
+            <h5>{{cardAffinity}}</h5>
           </div>
-          <h5 th:text="'Price: ' + ${card.prix} + '€'"></h5>
-          <h5 th:text="'Description: ' + ${card.description}"></h5>
+          <div class="cardrow">
+            <h5>{{cardHp}}</h5>
+            <h5>{{cardEnergie}}</h5>
+            <h5>{{cardAttack}}</h5>
+            <h5>{{cardDefence}}</h5>
+          </div>
         </div>
+        <h5>{{cardPrix}}</h5>
+        <h5>{{cardDescription}}</h5>
       </div>
     </div>
-    <hr />
   </div>
+  <hr />
+</template>
+<script src="/js/cardViewList.js"></script>
 </body>
 </html>

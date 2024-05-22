@@ -1,5 +1,5 @@
 function myfonction(){
-    const GET_API_URL="http://tp.cpe.fr:8083/cards";
+    const GET_API_URL="http://localhost:8080/cards/listAll";
     let context =   {
         method: 'GET'
     };
@@ -16,23 +16,25 @@ function callback(response){
 
     for(const card of cardlist){
         let clone = document.importNode(template.content, true);
+        if(card.enVente == true)
+        {
+            newContent = clone.firstElementChild.innerHTML
+                .replace(/{{CardName}}/g, card.name)
+                .replace(/{{CardDescription}}/g, card.description)
+                .replace(/{{smallImgUrl}}/g, card.smallImgUrl)
+                .replace(/{{CardImage_src}}/g, card.imgUrl)
+                .replace(/{{CardAffinity}}/g, card.affinity)
+                .replace(/{{CardFamily}}/g, card.family)
+                .replace(/{{Cardhp}}/g, card.hp)
+                .replace(/{{CardEnergy}}/g, card.energy)
+                .replace(/{{CardDefence}}/g, card.defence)
+                .replace(/{{CardAttack}}/g, card.attack)
+                .replace(/{{CardPrice}}/g, card.prix);
+            clone.firstElementChild.innerHTML = newContent;
 
-        newContent= clone.firstElementChild.innerHTML
-            .replace(/{{CardName}}/g, card.name)
-            .replace(/{{CardDescription}}/g, card.description)
-            .replace(/{{smallImgUrl}}/g, card.smallImgUrl)
-            .replace(/{{CardImage_src}}/g, card.imgUrl)
-            .replace(/{{CardAffinity}}/g, card.affinity)
-            .replace(/{{CardFamily}}/g, card.family)
-            .replace(/{{Cardhp}}/g, card.hp)
-            .replace(/{{CardEnergy}}/g, card.energy)
-            .replace(/{{CardDefence}}/g, card.defence)
-            .replace(/{{CardAttack}}/g, card.attack)
-            .replace(/{{CardPrice}}/g, card.price);
-        clone.firstElementChild.innerHTML= newContent;
-
-        let cardContainer= document.querySelector("#table-body");
-        cardContainer.appendChild(clone);
+            let cardContainer = document.querySelector("#table-body");
+            cardContainer.appendChild(clone);
+        }
     }
 }
 
