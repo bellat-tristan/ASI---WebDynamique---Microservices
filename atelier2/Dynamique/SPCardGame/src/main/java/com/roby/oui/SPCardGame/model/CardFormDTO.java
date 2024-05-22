@@ -18,7 +18,7 @@ public class CardFormDTO {
     private int energy;
     private int attack;
     private int defence;
-    private float prix;
+    private int prix;
 
 
     public CardFormDTO() {

@@ -23,11 +23,11 @@ public class CardDao {
 
     private void createCardList() {
 
-        Card p1=new Card("John", "Test", "https://www.pokemon.com/static-assets/content-assets/cms2-fr-fr/img/cards/web/SVP/SVP_FR_47.png","Feu","affinity",23,34,15,29, 5.50F);
-        Card p2=new Card("Roberto", "Test", "https://www.pokemon.com/static-assets/content-assets/cms2-fr-fr/img/cards/web/SVP/SVP_FR_47.png","Feu","affinity",23,34,15,29, 5.50F);
-        Card p3=new Card("Anna", "Test", "https://www.pokemon.com/static-assets/content-assets/cms2-fr-fr/img/cards/web/SVP/SVP_FR_47.png","Feu","affinity",23,34,15,29, 5.50F);
-        Card p4=new Card("Angry Joe","Test", "https://www.pokemon.com/static-assets/content-assets/cms2-fr-fr/img/cards/web/SVP/SVP_FR_47.png","Feu","affinity",23,34,15,29, 5.50F);
-        Card p5=new Card("Ursula", "Test", "https://www.pokemon.com/static-assets/content-assets/cms2-fr-fr/img/cards/web/SVP/SVP_FR_47.png","Feu","affinity",23,34,15,29, 5.50F);
+        Card p1=new Card("John", "Test", "https://www.pokemon.com/static-assets/content-assets/cms2-fr-fr/img/cards/web/SVP/SVP_FR_47.png","Feu","affinity",23,34,15,29, 50);
+        Card p2=new Card("Roberto", "Test", "https://www.pokemon.com/static-assets/content-assets/cms2-fr-fr/img/cards/web/SVP/SVP_FR_47.png","Feu","affinity",23,34,15,29, 50);
+        Card p3=new Card("Anna", "Test", "https://www.pokemon.com/static-assets/content-assets/cms2-fr-fr/img/cards/web/SVP/SVP_FR_47.png","Feu","affinity",23,34,15,29, 50);
+        Card p4=new Card("Angry Joe","Test", "https://www.pokemon.com/static-assets/content-assets/cms2-fr-fr/img/cards/web/SVP/SVP_FR_47.png","Feu","affinity",23,34,15,29, 50);
+        Card p5=new Card("Ursula", "Test", "https://www.pokemon.com/static-assets/content-assets/cms2-fr-fr/img/cards/web/SVP/SVP_FR_47.png","Feu","affinity",23,34,15,29, 50);
 
         myCardList.add(p1);
         myCardList.add(p2);
@@ -51,10 +51,9 @@ public class CardDao {
         return this.myCardList.get(index);
     }
 
-    public Card addCard(String name, String description, String imgUrl, String family, String affinity, int hp, int energy, int attack, int defence, float prix) {
+    public Card addCard(String name, String description, String imgUrl, String family, String affinity, int hp, int energy, int attack, int defence, int prix) {
         Card p=new Card(name, description, imgUrl,family,affinity,hp,energy,attack,defence,prix);
         this.myCardList.add(p);
         return p;
     }
 }
-
