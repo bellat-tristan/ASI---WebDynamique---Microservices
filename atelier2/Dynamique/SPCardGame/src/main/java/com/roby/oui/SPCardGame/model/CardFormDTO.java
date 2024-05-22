@@ -25,6 +25,13 @@ public class CardFormDTO {
         this.description = "";
         this.name = "";
         this.imgUrl = "";
+        this.affinity="";
+        this.family="";
+        this.hp=0;
+        this.energy=0;
+        this.attack=0;
+        this.defence=0;
+        this.prix=0;
     }
 }
 

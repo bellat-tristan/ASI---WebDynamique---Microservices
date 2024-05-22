@@ -11,10 +11,9 @@
 </div>
 <div id="cardinfo-container">
     <div id="form-tocomplete">
-        <h3>Preview carte</h3>
-        <form th:action="@{/addCard}"
-              th:object="${cardForm}" method="POST">
-            <label for="form-name">Name</label>
+        <h3>Add a card</h3>
+        <form th:action="@{/addCards}" th:object="${cardForm}" method="POST">
+        <label for="form-name">Name</label>
             <div >
                 <input id="form-name" class="inputsform" type="text"
                        placeholder="Card name..." th:field="*{name}">
@@ -74,19 +73,37 @@
                 <label for="form-price">Price</label>
                 <input type="number" class="inputsform" id="form-price" name="price" min="0" max="1000" step="0.01" placeholder="Enter price in €">
             </div>
-            <div >
+            <div>
                 <input type="submit"  class="uk-button uk-button-default" value="Create" />
+            </div>
+            <div>
+                <button type="button" class="uk-button uk-button-default" onclick="cancel()">Cancel</button>
             </div>
         </form>
     </div>
-    <div id="card-preview">
-        <h3>Preview carte</h3>
+    <div id="image-preview-container">
+        <h3>Image Preview</h3>
+        <img id="image-preview" src="#" alt="Image Preview" style="max-width: 100%; max-height: 200px;">
     </div>
 </div>
 </body>
 <script>
     function updateValue(id, val) {
         document.getElementById(id).innerText = val;
+    }
+    // Fonction pour mettre à jour l'aperçu de l'image
+    function updateImagePreview() {
+        var imgUrl = document.getElementById('form-imgUrl').value;
+        var imagePreview = document.getElementById('image-preview');
+
+        // Mettre à jour l'attribut src de l'élément img avec l'URL de l'image saisie
+        imagePreview.src = imgUrl;
+    }
+    // Ajouter un écouteur d'événements pour le champ d'URL de l'image
+    document.getElementById('form-imgUrl').addEventListener('input', updateImagePreview);
+    // Fonction pour rediriger vers la page d'accueil ("/")
+    function cancel() {
+        window.location.href = "/";
     }
 </script>
 </html>
