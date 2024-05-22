@@ -8,6 +8,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.nio.file.FileStore;
 import java.util.List;
 
 @RestController
@@ -16,11 +17,11 @@ public class CardController {
     @Autowired
     private CardService cardService;
 
-    @PostMapping("/buy")
-    public ResponseEntity<Card> buyCard(@RequestBody Card card, HttpSession session) {
+    @RequestMapping(value = {"/buy"}, method = RequestMethod.POST)
+    public ResponseEntity<Card> buyCard(Card card, HttpSession session) {
         Long userId = (Long) session.getAttribute("userId");
         if (userId != null) {
-            cardService.addCardToUser(userId, card);
+            cardService.addCardToUser(card, userId);
             return new ResponseEntity<>(card, HttpStatus.CREATED);
         } else {
             return new ResponseEntity<>(HttpStatus.UNAUTHORIZED);
@@ -28,17 +29,12 @@ public class CardController {
     }
 
     @PostMapping("/sell")
-    public ResponseEntity<Void> sellCard(@RequestBody Long cardId, HttpSession session) {
-        Long userId = (Long) session.getAttribute("userId");
-        if (userId != null) {
-            cardService.deleteCardToUser(userId, cardId);
-            return new ResponseEntity<>(HttpStatus.NO_CONTENT);
-        } else {
-            return new ResponseEntity<>(HttpStatus.UNAUTHORIZED);
-        }
+    public ResponseEntity<Void> sellCard(@RequestBody Card card, boolean state, HttpSession session) {
+        cardService.setIsSelling(card, state);
+        return new ResponseEntity<>(HttpStatus.NO_CONTENT);
     }
 
-    @GetMapping
+    @RequestMapping(value = {"/card"}, method = RequestMethod.GET)
     public ResponseEntity<List<Card>> getAllCards() {
         List<Card> cards = cardService.getAllCards();
         return new ResponseEntity<>(cards, HttpStatus.OK);

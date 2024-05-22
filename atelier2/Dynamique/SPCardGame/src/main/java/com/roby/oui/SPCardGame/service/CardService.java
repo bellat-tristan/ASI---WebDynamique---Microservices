@@ -34,33 +34,41 @@ public class CardService {
         return cards.get(index);
     }
 
-    public void addCardToUser(Long userId, Card card) {
+    public void addCardToUser(Card card, Long userId) {
         Optional<User> userOpt = userRepository.findById(userId);
         if (userOpt.isPresent()) {
             User user = userOpt.get();
+            Optional<User> seller = userRepository.findById(card.getOwnerId());
+            if (!seller.isEmpty()){
+                seller.get().setCredits(seller.get().getCredits() + card.getPrix());
+                userRepository.save(seller.get());
+            }
+
             user.getCards().add(card);
+            card.setOwnerId(user.getId());
+            cardRepository.save(card);
             user.setCredits(user.getCredits() - card.getPrix());
             userRepository.save(user);
         } else {
             throw new RuntimeException("User not found");
         }
     }
-
-    public void deleteCardToUser(Long userId, Long cardId) {
+    public void deleteCardToUser(Card card, Long userId) {
         Optional<User> userOpt = userRepository.findById(userId);
         if (userOpt.isPresent()) {
             User user = userOpt.get();
-            Optional<Card> cardOpt = cardRepository.findById(cardId);
-            if (cardOpt.isPresent()) {
-                Card card = cardOpt.get();
-                user.getCards().remove(card);
-                user.setCredits(user.getCredits() + card.getPrix());
-                userRepository.save(user);
-            } else {
-                throw new RuntimeException("Card not found");
-            }
+
+            user.getCards().remove(card);
+            user.setCredits(user.getCredits() + card.getPrix());
+            userRepository.save(user);
+
         } else {
             throw new RuntimeException("User not found");
         }
+    }
+
+    public void setIsSelling(Card card, boolean state){
+        card.setEnVente(state);
+        cardRepository.save(card);
     }
 }

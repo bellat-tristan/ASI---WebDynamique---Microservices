@@ -25,7 +25,8 @@ public class Card {
     private int prix;
     private boolean enVente;
 
-
+    // @ManyToOne(fetch = FetchType.EAGER, optional = true)
+    private Long ownerId;
 
     public Card(String name, String description, String imgUrl, String family, String affinity, int hp, int energy, int attack, int defence, int prix) {
         this.name = name;
