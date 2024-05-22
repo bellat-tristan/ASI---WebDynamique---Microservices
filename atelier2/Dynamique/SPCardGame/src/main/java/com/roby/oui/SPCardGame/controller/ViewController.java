@@ -59,9 +59,6 @@ public class ViewController {
     public String user(Model model, HttpSession session) {
         return "user";
     }
-    public String login() {
-        return "login"; // Retourne le nom de la vue de la page de connexion (login.html)
-    }
 
     @RequestMapping(value = { "/buycard"}, method = RequestMethod.GET)
     public String buycard(Model model) {
