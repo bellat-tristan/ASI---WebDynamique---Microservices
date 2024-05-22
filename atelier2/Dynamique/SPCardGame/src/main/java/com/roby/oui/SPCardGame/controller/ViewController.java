@@ -1,11 +1,14 @@
 package com.roby.oui.SPCardGame.controller;
 
+
+import com.roby.oui.SPCardGame.model.Card;
 import com.roby.oui.SPCardGame.model.CardFormDTO;
 import jakarta.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
@@ -67,6 +70,7 @@ public class ViewController {
         model.addAttribute("username", username != null ? username : "Connectez-vous");
         return "cardForm";
     }
+
 
     /*@RequestMapping(value = {"/addCards"}, method = RequestMethod.POST)
     public String addCard(Model model, @ModelAttribute("cardForm") CardFormDTO cardForm, HttpSession session) {
