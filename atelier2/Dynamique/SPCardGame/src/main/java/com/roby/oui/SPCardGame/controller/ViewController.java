@@ -54,14 +54,14 @@ public class ViewController {
         return "form-sample";
     }*/
 
-    /*@RequestMapping(value = {"/view"}, method = RequestMethod.GET)
+    @RequestMapping(value = {"/view"}, method = RequestMethod.GET)
     public String view(Model model, HttpSession session) {
         model.addAttribute("myCard", cardDao.getRandomCard());
         model.addAttribute("pageTitle", "View");
         String username = (String) session.getAttribute("username");
         model.addAttribute("username", username != null ? username : "Connectez-vous");
         return "cardView";
-    }*/
+    }
 
     @RequestMapping(value = {"/addCardView"}, method = RequestMethod.GET)
     public String addCard(Model model, HttpSession session) {

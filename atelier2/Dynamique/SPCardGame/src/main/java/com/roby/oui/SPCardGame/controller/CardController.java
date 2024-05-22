@@ -47,9 +47,6 @@ public class CardController {
         return new ResponseEntity<>(cards, HttpStatus.OK);
     }
 
-<<<<<<< HEAD
-
-=======
     @PostMapping("/addCards")
     public ResponseEntity<Card> addCard(@RequestBody CardFormDTO cardForm, HttpSession session) {
         Card card = new Card();
@@ -72,5 +69,4 @@ public class CardController {
             return new ResponseEntity<>(HttpStatus.UNAUTHORIZED);
         }
     }
->>>>>>> dca79378fd13f278f2cdc88eeac05036861cf2c1
 }

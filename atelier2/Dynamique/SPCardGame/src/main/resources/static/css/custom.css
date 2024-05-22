@@ -191,3 +191,48 @@ button:hover {
 .slidersValue {
     font-size: 14px;
 }
+
+.card-info {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    align-items: center; /* Centrer horizontalement les éléments */
+    gap: 20px;
+}
+
+.cardview-details {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    align-items: center; /* Centrer horizontalement les éléments */
+}
+
+.card-description {
+    margin-top: 20px;
+    text-align: center; /* Centrer le texte de la description */
+}
+
+.cardrow {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 10px;
+}
+
+.cardview-details-item {
+    margin: 0;
+    text-align: center; /* Centrer le texte de Family, Affinity, HP, etc. */
+}
+.imageCard img {
+    max-width: 100px; /* Ajuster la largeur de l'image pour s'adapter au conteneur */
+    height: auto; /* Garder le ratio de l'image */
+}
+
+.card-container{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 10px;
+}
