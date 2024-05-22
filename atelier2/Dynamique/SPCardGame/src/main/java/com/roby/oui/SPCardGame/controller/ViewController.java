@@ -33,6 +33,8 @@ public class ViewController {
         model.addAttribute("username", username != null ? username : "Connectez-vous");
         Long userId = (Long) session.getAttribute("userId");
         model.addAttribute("userId", userId);
+        Integer credits = (Integer) session.getAttribute("credits");
+        model.addAttribute("credits", credits != null ? credits : 0);
         return "index";
     }
 
@@ -68,6 +70,8 @@ public class ViewController {
         model.addAttribute("pageTitle", "Add card");
         String username = (String) session.getAttribute("username");
         model.addAttribute("username", username != null ? username : "Connectez-vous");
+        Integer credits = (Integer) session.getAttribute("credits");
+        model.addAttribute("credits", credits);
         return "cardForm";
     }
 
