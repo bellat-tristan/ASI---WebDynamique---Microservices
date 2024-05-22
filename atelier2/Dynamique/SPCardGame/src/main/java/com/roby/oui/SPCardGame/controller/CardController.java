@@ -19,11 +19,11 @@ public class CardController {
     private CardService cardService;
 
     @RequestMapping(value = {"/buy"}, method = RequestMethod.POST)
-    public ResponseEntity<Card> buyCard(Long idCard, HttpSession session) {
+    public ResponseEntity<Boolean> buyCard(Long idCard, HttpSession session) {
         Long userId = (Long) session.getAttribute("userId");
         if (userId != null) {
-            cardService.addCardToUser(idCard, userId);
-            return new ResponseEntity<>(HttpStatus.CREATED);
+            Boolean res = cardService.addCardToUser(idCard, userId);
+            return new ResponseEntity<>(res, HttpStatus.CREATED);
         } else {
             return new ResponseEntity<>(HttpStatus.UNAUTHORIZED);
         }
@@ -47,8 +47,9 @@ public class CardController {
         return new ResponseEntity<>(cards, HttpStatus.OK);
     }
 
-    @PostMapping("/addCards")
-    public ResponseEntity<Card> addCard(@RequestBody Card card, HttpSession session) {
+
+    @RequestMapping(value = {"/addCards"}, method = RequestMethod.POST)
+    public ResponseEntity<Card> addCard(Card card, HttpSession session) {
         Long userId = (Long) session.getAttribute("userId");
         if (userId != null) {
             cardService.createCard(card, userId);

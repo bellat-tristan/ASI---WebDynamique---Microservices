@@ -38,25 +38,30 @@ public class CardService {
         return cards.get(index);
     }
 
-    public void addCardToUser(Long idCard, Long userId) {
+    public Boolean addCardToUser(Long idCard, Long userId) {
         Optional<User> userOpt = userRepository.findById(userId);
         Optional<Card> cardOpt = cardRepository.findById(idCard);
         if (userOpt.isPresent() && cardOpt.isPresent()) {
             User user = userOpt.get();
             Card card = cardOpt.get();
-            if (card.getOwner() != null) {
-                Optional<User> seller = userRepository.findById(card.getOwner().getId());
-                if (seller.isPresent()) {
-                    seller.get().setCredits(seller.get().getCredits() + card.getPrix());
-                    userRepository.save(seller.get());
+            if (user.getCredits() <= card.getPrix()){
+                if (card.getOwner() != null) {
+                    Optional<User> seller = userRepository.findById(card.getOwner().getId());
+                    if (seller.isPresent()) {
+                        seller.get().setCredits(seller.get().getCredits() + card.getPrix());
+                        userRepository.save(seller.get());
+                    }
                 }
+                user.getCards().add(card);
+                card.setEnVente(false);
+                card.setOwner(user);
+                cardRepository.save(card);
+                user.setCredits(user.getCredits() - card.getPrix());
+                userRepository.save(user);
+                return true;
             }
-            user.getCards().add(card);
-            card.setEnVente(false);
-            card.setOwner(user);
-            cardRepository.save(card);
-            user.setCredits(user.getCredits() - card.getPrix());
-            userRepository.save(user);
+            return false;
+
         } else {
             throw new RuntimeException("User not found");
         }
