@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 
 @Controller
-public class RequestCrt {
+public class ViewController {
 
     @Autowired
     private CardDao cardDao;
