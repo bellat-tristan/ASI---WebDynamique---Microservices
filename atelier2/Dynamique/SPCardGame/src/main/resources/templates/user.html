@@ -42,8 +42,7 @@
 
         if (response.ok) {
             alert('Login successful');
-            // Vous pouvez stocker les informations de l'utilisateur dans localStorage ou gérer la session comme vous le souhaitez
-            console.log('Login successful');
+            window.location.href = '/index';
         } else {
             document.getElementById('login-error').innerText = 'Login failed. Please check your credentials.';
         }
@@ -63,7 +62,6 @@
 
         if (response.ok) {
             alert('Registration successful');
-            // Vous pouvez automatiquement connecter l'utilisateur après l'inscription si vous le souhaitez
             console.log('Registration successful');
         } else {
             document.getElementById('register-error').innerText = 'Registration failed.';
