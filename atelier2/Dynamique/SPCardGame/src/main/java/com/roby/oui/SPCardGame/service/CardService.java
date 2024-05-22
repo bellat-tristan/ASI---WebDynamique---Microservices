@@ -13,6 +13,7 @@ import java.util.Random;
 
 @Service
 public class CardService {
+
     @Autowired
     private CardRepository cardRepository;
     @Autowired
@@ -32,11 +33,6 @@ public class CardService {
         return Optional.ofNullable(cardRepository.findByName(name));
     }
 
-    public Card getRandomCard() {
-        List<Card> cards = cardRepository.findAll();
-        int index = randomGenerator.nextInt(cards.size());
-        return cards.get(index);
-    }
 
     public void addCardToUser(Long idCard, Long userId) {
         Optional<User> userOpt = userRepository.findById(userId);
@@ -61,7 +57,8 @@ public class CardService {
             throw new RuntimeException("User not found");
         }
     }
-    public void deleteCardToUser(Card card, Long userId) {
+
+    public void deleteCardFromUser(Card card, Long userId) {
         Optional<User> userOpt = userRepository.findById(userId);
         if (userOpt.isPresent()) {
             User user = userOpt.get();
@@ -73,17 +70,18 @@ public class CardService {
         }
     }
 
-    public void setIsSelling(Long idCard, boolean state){
+    public void setIsSelling(Long idCard, boolean state) {
         Optional<Card> cardOpt = cardRepository.findById(idCard);
         if (cardOpt.isPresent()) {
             Card card = cardOpt.get();
             card.setEnVente(state);
             cardRepository.save(card);
         } else {
-            throw new RuntimeException("User not found");
+            throw new RuntimeException("Card not found");
         }
     }
-    public void createCard(Card card, Long userId){
+
+    public void createCard(Card card, Long userId) {
         Optional<User> userOpt = userRepository.findById(userId);
         if (userOpt.isPresent()) {
             User user = userOpt.get();
