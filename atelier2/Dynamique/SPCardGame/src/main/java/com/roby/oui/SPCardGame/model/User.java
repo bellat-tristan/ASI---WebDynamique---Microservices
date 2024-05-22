@@ -21,6 +21,6 @@ public class User {
 
     private int credits = 100;
 
-    @OneToMany
+    @OneToMany(mappedBy = "owner", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private List<Card> cards;
 }

@@ -39,4 +39,10 @@ public class CardController {
         List<Card> cards = cardService.getAllCards();
         return new ResponseEntity<>(cards, HttpStatus.OK);
     }
+
+    @RequestMapping(value = {"/sellingCards"}, method = RequestMethod.GET)
+    public ResponseEntity<List<Card>> getSellingCards() {
+        List<Card> cards = cardService.getSellingCards();
+        return new ResponseEntity<>(cards, HttpStatus.OK);
+    }
 }

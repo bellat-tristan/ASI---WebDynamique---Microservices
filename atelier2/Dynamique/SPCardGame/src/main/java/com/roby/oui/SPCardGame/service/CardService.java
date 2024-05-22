@@ -24,6 +24,10 @@ public class CardService {
         return cardRepository.findAll();
     }
 
+    public List<Card> getSellingCards() {
+        return cardRepository.findByEnVente(true);
+    }
+
     public Optional<Card> getCardByName(String name) {
         return Optional.ofNullable(cardRepository.findByName(name));
     }
@@ -38,14 +42,14 @@ public class CardService {
         Optional<User> userOpt = userRepository.findById(userId);
         if (userOpt.isPresent()) {
             User user = userOpt.get();
-            Optional<User> seller = userRepository.findById(card.getOwnerId());
+            Optional<User> seller = userRepository.findById(card.getOwner().getId());
             if (!seller.isEmpty()){
                 seller.get().setCredits(seller.get().getCredits() + card.getPrix());
                 userRepository.save(seller.get());
             }
-
             user.getCards().add(card);
-            card.setOwnerId(user.getId());
+            card.setEnVente(false);
+            card.setOwner(user);
             cardRepository.save(card);
             user.setCredits(user.getCredits() - card.getPrix());
             userRepository.save(user);
@@ -57,11 +61,9 @@ public class CardService {
         Optional<User> userOpt = userRepository.findById(userId);
         if (userOpt.isPresent()) {
             User user = userOpt.get();
-
             user.getCards().remove(card);
             user.setCredits(user.getCredits() + card.getPrix());
             userRepository.save(user);
-
         } else {
             throw new RuntimeException("User not found");
         }
