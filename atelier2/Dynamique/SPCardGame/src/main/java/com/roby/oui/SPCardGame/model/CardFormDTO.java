@@ -17,22 +17,8 @@ public class CardFormDTO {
     private int hp;
     private int energy;
     private int attack;
-    private int defence;
-    private int prix;
-
-
-    public CardFormDTO() {
-        this.description = "";
-        this.name = "";
-        this.imgUrl = "";
-        this.affinity="";
-        this.family="";
-        this.hp=0;
-        this.energy=0;
-        this.attack=0;
-        this.defence=0;
-        this.prix=0;
-    }
+    private int defense;
+    private double prix;
 }
 
 

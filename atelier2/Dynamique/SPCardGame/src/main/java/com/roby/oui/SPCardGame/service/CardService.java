@@ -39,6 +39,10 @@ public class CardService {
         }
     }
 
+    public Card findCardByName(String name) {
+        return cardRepository.findByName(name);
+    }
+
     public Optional<Card> getCardByName(String name) {
         return Optional.ofNullable(cardRepository.findByName(name));
     }
