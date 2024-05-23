@@ -46,6 +46,24 @@ public class CardController {
         return new ResponseEntity<>(cards, HttpStatus.OK);
     }
 
+    @RequestMapping(value = {"/sellingCards"}, method = RequestMethod.GET)
+    public ResponseEntity<List<Card>> getSellingCards() {
+        List<Card> cards = cardService.getSellingCards();
+        return new ResponseEntity<>(cards, HttpStatus.OK);
+    }
+
+    @RequestMapping(value = {"/userCards"}, method = RequestMethod.GET)
+    public ResponseEntity<List<Card>> getUserCards(HttpSession session) {
+        Long userId = (Long) session.getAttribute("userId");
+        if (userId != null) {
+            List<Card> cards = cardService.getUserCards(userId);
+            return new ResponseEntity<>(cards, HttpStatus.OK);
+        } else {
+            return new ResponseEntity<>(HttpStatus.UNAUTHORIZED);
+        }
+
+    }
+
     @RequestMapping(value = {"/addCards"}, method = RequestMethod.POST)
     public ResponseEntity<Card> addCard(@RequestBody Card card, HttpSession session) {
         Long userId = (Long) session.getAttribute("userId");
