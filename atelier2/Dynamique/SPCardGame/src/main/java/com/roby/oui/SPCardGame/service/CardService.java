@@ -59,7 +59,7 @@ public class CardService {
                         userRepository.save(seller.get());
                     }
                 }
-                user.getCards().add(card);
+                //user.getCards().add(card);
                 card.setEnVente(false);
                 card.setOwner(user);
                 cardRepository.save(card);
@@ -75,7 +75,7 @@ public class CardService {
         }
     }
 
-    public void deleteCardFromUser(Card card, Long userId) {
+    /*public void deleteCardFromUser(Card card, Long userId) {
         Optional<User> userOpt = userRepository.findById(userId);
         if (userOpt.isPresent()) {
             User user = userOpt.get();
@@ -85,7 +85,7 @@ public class CardService {
         } else {
             throw new RuntimeException("User not found");
         }
-    }
+    }*/
 
     public void setIsSelling(Long idCard, boolean state) {
         Optional<Card> cardOpt = cardRepository.findById(idCard);
