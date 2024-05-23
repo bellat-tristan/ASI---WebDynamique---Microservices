@@ -39,16 +39,7 @@ INSERT INTO starter_card (id, name, description, img_url, family, affinity, hp, 
 (37, 'Ember Knight', 'A knight whose sword blazes with fire.', 'cards/emberKnight.jpg', 'warrior', 'fire', 45, 30, 35, 25, 95),
 (38, 'Frost Sorcerer', 'A mage with power over ice.', 'cards/frostSorcerer.jpg', 'mage', 'ice', 20, 35, 30, 25, 85),
 (39, 'Veiled Assassin', 'A rogue cloaked in mystery.', 'cards/veiledAssassin.jpg', 'rogue', 'darkness', 30, 25, 35, 20, 75),
-(40, 'Solar Paladin', 'A knight empowered by the sun.', 'cards/image40.jpg', 'knight', 'earth', 40, 30, 30, 40, 110),
-(41, 'Lunar Guardian', 'A knight who draws strength from the moon.', 'cards/image41.jpg', 'knight', 'earth', 40, 20, 25, 35, 105),
-(42, 'Divine Bard', 'A bard blessed by the divine.', 'cards/image42.jpg', 'bard', 'wind', 25, 30, 25, 20, 75),
-(43, 'Infernal Warrior', 'A warrior fueled by infernal power.', 'cards/image43.jpg', 'warrior', 'fire', 50, 25, 45, 35, 135),
-(44, 'Arcane Scholar', 'A mage with deep knowledge of the arcane.', 'cards/image44.jpg', 'mage', 'arcane', 20, 35, 30, 20, 85),
-(45, 'Nightshade', 'A rogue skilled in the use of poison.', 'cards/image45.jpg', 'rogue', 'darkness', 25, 30, 40, 20, 90),
-(46, 'Stone Guardian', 'A knight with an unbreakable shield.', 'cards/image46.jpg', 'knight', 'earth', 45, 25, 30, 40, 110),
-(47, 'Radiant Cleric', 'A cleric who shines with holy light.', 'cards/image47.jpg', 'cleric', 'light', 35, 45, 20, 25, 95),
-(48, 'Whispering Bard', 'A bard who tells secrets through song.', 'cards/image48.jpg', 'bard', 'wind', 20, 25, 25, 20, 65),
-(49, 'Ember Knight', 'A knight whose sword blazes with fire.', 'cards/image49.jpg', 'warrior', 'fire', 45, 30, 35, 25, 95),
-(50, 'Frost Sorcerer', 'A mage with power over ice.', 'cards/image50.jpg', 'mage', 'ice', 20, 35, 30, 25, 85);
-
-
+(40, 'Solar Paladin', 'A knight empowered by the sun.', '/cards/SolarPaladin.jpg', 'knight', 'earth', 40, 30, 30, 40, 110),
+(41, 'Lunar Guardian', 'A knight who draws strength from the moon.', '/cards/LunarGuardian.jpg', 'knight', 'earth', 40, 20, 25, 35, 105),
+(42, 'Divine Bard', 'A bard blessed by the divine.', '/cards/DivineBard.jpg', 'bard', 'wind', 25, 30, 25, 20, 75),
+(43, 'Infernal Warrior', 'A warrior fueled by infernal power.', '/cards/InfernalWarrior.jpg', 'warrior', 'fire', 50, 25, 45, 35, 135);
