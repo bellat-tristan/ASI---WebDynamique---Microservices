@@ -13,6 +13,7 @@ import java.util.Random;
 
 @Service
 public class CardService {
+
     @Autowired
     private CardRepository cardRepository;
     @Autowired
@@ -28,36 +29,57 @@ public class CardService {
         return cardRepository.findByEnVente(true);
     }
 
-    public Optional<Card> getCardByName(String name) {
-        return Optional.ofNullable(cardRepository.findByName(name));
-    }
-
-    public Card getRandomCard() {
-        List<Card> cards = cardRepository.findAll();
-        int index = randomGenerator.nextInt(cards.size());
-        return cards.get(index);
-    }
-
-    public void addCardToUser(Card card, Long userId) {
+    public List<Card> getUserCards(Long userId) {
         Optional<User> userOpt = userRepository.findById(userId);
-        if (userOpt.isPresent()) {
+        if (userOpt.isPresent()){
             User user = userOpt.get();
-            Optional<User> seller = userRepository.findById(card.getOwner().getId());
-            if (!seller.isEmpty()){
-                seller.get().setCredits(seller.get().getCredits() + card.getPrix());
-                userRepository.save(seller.get());
-            }
-            user.getCards().add(card);
-            card.setEnVente(false);
-            card.setOwner(user);
-            cardRepository.save(card);
-            user.setCredits(user.getCredits() - card.getPrix());
-            userRepository.save(user);
+            return cardRepository.findByOwner(user);
         } else {
             throw new RuntimeException("User not found");
         }
     }
-    public void deleteCardToUser(Card card, Long userId) {
+
+    public Card findCardByName(String name) {
+        return cardRepository.findByName(name);
+    }
+
+    public Optional<Card> getCardByName(String name) {
+        return Optional.ofNullable(cardRepository.findByName(name));
+    }
+
+
+    public Boolean addCardToUser(Long idCard, Long userId) {
+        Optional<User> userOpt = userRepository.findById(userId);
+        Optional<Card> cardOpt = cardRepository.findById(idCard);
+        if (userOpt.isPresent() && cardOpt.isPresent()) {
+            User user = userOpt.get();
+            Card card = cardOpt.get();
+            // ICI SI JE TROUVE PAS LE VENDEUR; JE DONNE PAS LES SOUS
+            if (user.getCredits() >= card.getPrix()){
+                if (card.getOwner() != null) {
+                    Optional<User> seller = userRepository.findById(card.getOwner().getId());
+                    if (seller.isPresent()) {
+                        seller.get().setCredits(seller.get().getCredits() + card.getPrix());
+                        userRepository.save(seller.get());
+                    }
+                }
+                //user.getCards().add(card);
+                card.setEnVente(false);
+                card.setOwner(user);
+                cardRepository.save(card);
+                user.setCredits(user.getCredits() - card.getPrix());
+                userRepository.save(user);
+                return true;
+            }
+            System.out.println("L'utilisateur n'a pas assez d'argent");
+            return false;
+
+        } else {
+            throw new RuntimeException("User not found");
+        }
+    }
+
+    /*public void deleteCardFromUser(Card card, Long userId) {
         Optional<User> userOpt = userRepository.findById(userId);
         if (userOpt.isPresent()) {
             User user = userOpt.get();
@@ -67,10 +89,43 @@ public class CardService {
         } else {
             throw new RuntimeException("User not found");
         }
+    }*/
+
+    public void setIsSelling(Long idCard, boolean state) {
+        Optional<Card> cardOpt = cardRepository.findById(idCard);
+        if (cardOpt.isPresent()) {
+            Card card = cardOpt.get();
+            card.setEnVente(state);
+            cardRepository.save(card);
+        } else {
+            throw new RuntimeException("Card not found");
+        }
     }
 
-    public void setIsSelling(Card card, boolean state){
-        card.setEnVente(state);
+    public void createCard(Card card, Long userId) {
+        // calcule du prix en fonction des paramètres de la carte
+        int hp = card.getHp();
+        int energy = card.getEnergy();
+        int attack = card.getAttack();
+        int defense = card.getDefense();
+
+        int maxAttributeValue = 100;
+        int maxPrice = 1000;
+
+        int totalValue = hp + energy + attack + defense;
+        double percentage = (double) totalValue / (4 * maxAttributeValue);
+        double rawPrice = percentage * maxPrice;
+        Random random = new Random();
+        double price = rawPrice * (0.9 + random.nextDouble() * 0.2);
+        int intPrice = (int) price;
+        if (intPrice < 1)
+            intPrice = 1;
+        else if (intPrice > 1000) {
+            intPrice = 1000;
+        }
+
+        card.setPrix(intPrice);
+        card.setEnVente(true);
         cardRepository.save(card);
     }
 }

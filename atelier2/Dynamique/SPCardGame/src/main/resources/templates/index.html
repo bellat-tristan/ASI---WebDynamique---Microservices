@@ -4,6 +4,8 @@
     <meta charset="UTF-8" />
     <title>Welcome</title>
     <link rel="stylesheet" type="text/css" href="/css/custom.css" />
+    <script src="/js/header.js"></script>
+    <script src="/js/credits.js"></script>
 </head>
 <body>
 <div th:replace="~{fragments/header :: header}">
@@ -12,10 +14,12 @@
 </div>
 <div class="imgindex-container">
     <ul>
-        <a href="/view" class="imgindex"><img src="/img/buy.jpg" alt="" ></a>
-        <a href="/addCard" class="imgindex"><img src="/img/sell.jpg" alt=""></a>
-        <a href="/list" class="imgindex"><img src="/img/play.jpg" alt=""></a>
+        <a href="/buycard" class="imgindex"><img src="/img/buyfin.jpg" alt="" ></a>
+        <a href="/sellcard" class="imgindex"><img src="/img/sellfin.jpg" alt=""></a>
+        <a href="/listAllCardView" class="imgindex"><img src="/img/playfin.jpg" alt=""></a>
+        <a href="/addCardView" class="imgindex"><img src="/img/addfin.jpg" alt=""></a>
     </ul>
 </div>
+<div th:replace="~{fragments/footer :: footer}"></div>
 </body>
 </html>

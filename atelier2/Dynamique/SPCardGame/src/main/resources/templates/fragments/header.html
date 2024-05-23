@@ -3,19 +3,21 @@
 <head>
     <meta charset="UTF-8" />
     <title>HEADER</title>
-    <link rel="stylesheet" type="text/css" th:href="@{/css/style.css}" />
+    <link rel="stylesheet" type="text/css" href="/css/style.css" />
 </head>
 <body>
 <div th:fragment="header" class="header">
     <div class="headertocenter">
-        <h1>0€</h1>
+        <h1 id="credits"></h1>
     </div>
     <div class="headertocenter">
-        <h1 th:text="${pageTitle}"></h1>
+        <h1 id="pageTitle">CardQuest</h1>
     </div>
-    <div class="headertocenter">
-        <a href="/user" ><img th:src="@{/img/connexion.png}" alt="Connexion"></a>
-        <div id="nameofuser" th:text="${username}">Connectez-vous</div>
+    <div class="headertocenter" id="connexion">
+        <a href="/userView">
+            <img id="userImage" src="/img/connexion.png" alt="Connexion">
+            <div id="nameofuser"></div>
+        </a>
     </div>
 </div>
 </body>

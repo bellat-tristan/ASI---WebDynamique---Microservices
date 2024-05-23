@@ -52,16 +52,31 @@ body {
     padding: 20px;
     width: 100%;
     box-sizing: border-box;
+    flex-wrap: wrap; /* Ajoutez cette ligne pour permettre le retour à la ligne des éléments si nécessaire */
+}
+
+.connexion {
+    display: flex; /* Ajoutez cette ligne pour aligner horizontalement les éléments */
+    align-items: center;
+}
+
+#connexion{
+    display: flex;
+}
+
+.headertocenter {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 .headertocenter img {
-    margin-right: 10px;
-    width: 100px;
+    margin-bottom: 5px; /* Ajoute un espace entre l'image et le texte */
 }
 
 .container {
     background-color: lightgrey;
-    padding: 20px;
+    padding: 10px;
     border-radius: 8px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     width: 300px;
@@ -82,7 +97,7 @@ input, button {
     margin: 10px 0;
     border: 1px solid #ccc;
     border-radius: 4px;
-    box-sizing: border-box; /* Ensure padding and border are included in the element's total width and height */
+    box-sizing: border-box;
 }
 
 button {
@@ -106,4 +121,144 @@ button:hover {
     display: flex;
     justify-content: center;
     align-items: center;
+}
+
+#cardinfo-container {
+    display: flex;
+    justify-content: space-around;
+    align-items: flex-start;
+}
+
+.inputsform {
+    width: 100%;
+    padding: 5px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+    transition: border-color 0.3s ease;
+}
+
+.inputsform:focus {
+    outline: none;
+    border-color: #007bff;
+}
+
+.inputsform::placeholder {
+    color: #999;
+}
+
+.inputsform[type="submit"] {
+    background-color: #007bff;
+    border: none;
+    color: white;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.inputsform[type="submit"]:hover {
+    background-color: #0056b3;
+}
+
+#card-preview {
+    flex: 2;
+    margin-right: 20px;
+    max-width: 400px;
+}
+
+#sliderHpValue,
+#sliderEnergyValue,
+#sliderattackValue,
+#sliderdefenseValue {
+    margin-left: 10px;
+}
+
+#form-tocomplete {
+    flex: 1;
+    margin-right: 20px;
+    max-width: 400px;
+}
+
+.sliders {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.slidersValue {
+    font-size: 14px;
+}
+
+.card-info {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 20px;
+}
+
+.cardview-details {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    align-items: center;
+}
+
+.card-description {
+    margin-top: 20px;
+    text-align: center;
+}
+
+.cardrow {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 10px;
+}
+
+.cardview-details-item {
+    margin: 0;
+    text-align: center;
+}
+
+.imageCard img {
+    max-width: 100px;
+    height: auto;
+}
+
+.card-container{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 10px;
+}
+
+.GlobalContain{
+    margin: 3%;
+    display: flex;
+    width: 100%;
+}
+
+.TabContain {
+    flex: auto;
+    max-width: 100%;
+    table-layout: auto;
+    border: 1px solid black;
+}
+.GlobalPreviewCard {
+    flex: auto;
+    max-width: 100%;
+}
+th {
+    border: 1px solid black;
+    width: 100%;
+}
+td {
+    border: 1px solid black;
+    width: 100%;
+}
+tbody{
+    max-width: 100%;
 }

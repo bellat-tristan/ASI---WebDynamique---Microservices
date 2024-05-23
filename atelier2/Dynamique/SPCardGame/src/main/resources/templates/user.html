@@ -4,6 +4,8 @@
     <meta charset="UTF-8">
     <title>Login and Registration</title>
     <link rel="stylesheet" type="text/css" href="/css/custom.css" />
+    <script src="/js/header.js"></script>
+    <script src="/js/credits.js"></script>
 </head>
 <body>
 <div th:replace="~{fragments/header :: header}">
@@ -25,6 +27,7 @@
         <button onclick="register()">Register</button>
         <div id="register-error" class="error"></div>
     </div>
+    <button onclick="deconnecteruser()">Se déconnecter</button>
 </div>
 
 <script>
@@ -41,13 +44,23 @@
         });
 
         if (response.ok) {
+            const data = await response.json();
+            localStorage.setItem('username', data.username);
+            localStorage.setItem('userId', data.userId);
+            localStorage.setItem('credits', data.credits);
             alert('Login successful');
-            // Vous pouvez stocker les informations de l'utilisateur dans localStorage ou gérer la session comme vous le souhaitez
-            console.log('Login successful');
+            window.location.href = '/index';
         } else {
             document.getElementById('login-error').innerText = 'Login failed. Please check your credentials.';
         }
     }
+
+    // Call the function on form submission
+    document.getElementById('loginForm').addEventListener('submit', function(event) {
+        event.preventDefault(); // Prevent the form from submitting the traditional way
+        login();
+    });
+
 
     async function register() {
         const username = document.getElementById('register-username').value;
@@ -63,12 +76,34 @@
 
         if (response.ok) {
             alert('Registration successful');
-            // Vous pouvez automatiquement connecter l'utilisateur après l'inscription si vous le souhaitez
             console.log('Registration successful');
+            window.location.reload(); // Rafraîchir la page si l'inscription est réussie
         } else {
             document.getElementById('register-error').innerText = 'Registration failed.';
         }
     }
+    async function deconnecteruser() {
+        // Supprimer les éléments du stockage local
+        const response = await fetch('/users/deconnect', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({})
+        });
+        if (response.ok) {
+            alert('Deconection successful');
+            console.log('Deconection successful');
+            window.location.reload();
+        } else {
+            document.getElementById('register-error').innerText = 'Deconection failed.';
+        }
+        localStorage.removeItem('username');
+        localStorage.removeItem('credits');
+        window.location.reload(); // Rafraîchir la page si l'inscription est réussie
+    }
+
 </script>
+<div th:replace="~{fragments/footer :: footer}"></div>
 </body>
 </html>

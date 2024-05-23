@@ -4,19 +4,42 @@
   <meta charset="UTF-8" />
   <title>Welcome</title>
   <link rel="stylesheet" type="text/css" href="/css/custom.css" />
+  <script src="/js/header.js"></script>
+  <script src="/js/credits.js"></script>
 </head>
-<body>
+<body onload = myfonction()>
 <div th:replace="~{fragments/header :: header}">
   <h1> THIS IS A DEFAULT HEADER</h1>
 </div>
-<ul>
-  <li th:each="card : ${cardList}">
-    <div>
-      <img th:src="${card.imgUrl}" alt="">
-      <h3 th:utext="${card.name}">...</h3>
-      <h5 th:text="'Description:  '+${card.description}">...</h5>
+<h3 id="titlepage">Liste complète des cartes</h3>
+<div id="cardListContainer">
+</div>
+<template id="cardTemplate">
+  <div class="card-info">
+    <h3 class="cardview">{{cardviewTitle}}</h3>
+    <div class="card-container">
+      <img class="cardview" src='{{cardviewImg}}' alt="">
+      <div>
+        <div class="cardview">
+          <div class="cardrow">
+            <h5>{{cardFamily}}</h5>
+            <h5>{{cardAffinity}}</h5>
+          </div>
+          <div class="cardrow">
+            <h5>{{cardHp}}</h5>
+            <h5>{{cardEnergie}}</h5>
+            <h5>{{cardAttack}}</h5>
+            <h5>{{cardDefence}}</h5>
+          </div>
+        </div>
+        <h5>{{cardPrix}}</h5>
+        <h5>{{cardDescription}}</h5>
+      </div>
     </div>
-  <li>
-</ul>
+  </div>
+  <hr />
+</template>
+<script src="/js/cardViewList.js"></script>
+<div th:replace="~{fragments/footer :: footer}"></div>
 </body>
 </html>

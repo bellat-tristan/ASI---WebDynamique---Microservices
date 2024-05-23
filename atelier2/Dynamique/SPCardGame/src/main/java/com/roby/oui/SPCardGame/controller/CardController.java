@@ -1,6 +1,7 @@
 package com.roby.oui.SPCardGame.controller;
 
 import com.roby.oui.SPCardGame.model.Card;
+import com.roby.oui.SPCardGame.model.CardFormDTO;
 import com.roby.oui.SPCardGame.service.CardService;
 import jakarta.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,23 +19,28 @@ public class CardController {
     private CardService cardService;
 
     @RequestMapping(value = {"/buy"}, method = RequestMethod.POST)
-    public ResponseEntity<Card> buyCard(Card card, HttpSession session) {
+    public ResponseEntity<Boolean> buyCard(@RequestParam Long idCard, HttpSession session) {
         Long userId = (Long) session.getAttribute("userId");
         if (userId != null) {
-            cardService.addCardToUser(card, userId);
-            return new ResponseEntity<>(card, HttpStatus.CREATED);
+            Boolean res = cardService.addCardToUser(idCard, userId);
+            return new ResponseEntity<>(res, HttpStatus.CREATED);
         } else {
             return new ResponseEntity<>(HttpStatus.UNAUTHORIZED);
         }
     }
 
     @RequestMapping(value = {"/sell"}, method = RequestMethod.POST)
-    public ResponseEntity<Void> sellCard(@RequestBody Card card, boolean state) {
-        cardService.setIsSelling(card, state);
-        return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+    public ResponseEntity<Void> sellCard( @RequestParam Long idCard, boolean state, HttpSession session) {
+        Long userId = (Long) session.getAttribute("userId");
+        if (userId != null) {
+            cardService.setIsSelling(idCard, state);
+            return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+        } else {
+            return new ResponseEntity<>(HttpStatus.UNAUTHORIZED);
+        }
     }
 
-    @RequestMapping(value = {"/card"}, method = RequestMethod.GET)
+    @RequestMapping(value = {"/listAll"}, method = RequestMethod.GET)
     public ResponseEntity<List<Card>> getAllCards() {
         List<Card> cards = cardService.getAllCards();
         return new ResponseEntity<>(cards, HttpStatus.OK);
@@ -44,5 +50,38 @@ public class CardController {
     public ResponseEntity<List<Card>> getSellingCards() {
         List<Card> cards = cardService.getSellingCards();
         return new ResponseEntity<>(cards, HttpStatus.OK);
+    }
+
+    @RequestMapping(value = {"/userCards"}, method = RequestMethod.GET)
+    public ResponseEntity<List<Card>> getUserCards(HttpSession session) {
+        Long userId = (Long) session.getAttribute("userId");
+        if (userId != null) {
+            List<Card> cards = cardService.getUserCards(userId);
+            return new ResponseEntity<>(cards, HttpStatus.OK);
+        } else {
+            return new ResponseEntity<>(HttpStatus.UNAUTHORIZED);
+        }
+
+    }
+
+    @RequestMapping(value = {"/addCards"}, method = RequestMethod.POST)
+    public ResponseEntity<Card> addCard(@RequestBody Card card, HttpSession session) {
+        Long userId = (Long) session.getAttribute("userId");
+        if (userId != null) {
+            cardService.createCard(card, userId);
+            return new ResponseEntity<>(card, HttpStatus.CREATED);
+        } else {
+            return new ResponseEntity<>(HttpStatus.UNAUTHORIZED);
+        }
+    }
+
+    @GetMapping("/search/{name}")
+    public ResponseEntity<Card> getCardByName(@PathVariable String name) {
+        Card card = cardService.findCardByName(name);
+        if (card != null) {
+            return new ResponseEntity<>(card, HttpStatus.OK);
+        } else {
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
     }
 }

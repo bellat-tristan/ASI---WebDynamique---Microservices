@@ -1,0 +1,65 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+.GlobalContain{
+    margin: 3%;
+    display: flex;
+    width: 100%;
+}
+
+.TabContain {
+    flex: auto;
+    max-width: 100%;
+    table-layout: auto;
+    border: 1px solid black;
+}
+.GlobalPreviewCard {
+    flex: auto;
+    max-width: 100%;
+}
+th {
+    border: 1px solid black;
+    width: 130%;
+    padding: 15px;
+}
+td {
+    border: 1px solid black;
+    width: 130%;
+    padding: 15px;
+}
+tbody{
+    max-width: 100%;
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 20px;
+    padding: 20px;
+    width: 100%;
+    box-sizing: border-box;
+    flex-wrap: wrap; /* Ajoutez cette ligne pour permettre le retour à la ligne des éléments si nécessaire */
+}
+
+.connexion {
+    display: flex; /* Ajoutez cette ligne pour aligner horizontalement les éléments */
+    align-items: center;
+}
+
+#connexion{
+    display: flex;
+}
+
+.headertocenter {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.headertocenter img {
+    margin-bottom: 5px; /* Ajoute un espace entre l'image et le texte */
+}
