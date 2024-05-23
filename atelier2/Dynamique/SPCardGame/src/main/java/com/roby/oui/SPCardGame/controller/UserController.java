@@ -58,4 +58,17 @@ public class UserController {
         return new ResponseEntity<>(HttpStatus.OK);
     }
 
+    @GetMapping("/credits/{username}")
+    public ResponseEntity<Map<String, Object>> getUserCredits(@PathVariable String username) {
+        User user = userService.getUserByUsername(username);
+        if (user != null) {
+            Map<String, Object> responseBody = new HashMap<>();
+            responseBody.put("username", user.getUsername());
+            responseBody.put("credits", user.getCredits());
+            return ResponseEntity.ok(responseBody);
+        }
+
+        return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
+    }
+
 }
