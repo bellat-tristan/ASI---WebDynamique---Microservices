@@ -1,6 +1,6 @@
 -- Insertion des données
 INSERT INTO starter_card (id, name, description, img_url, family, affinity, hp, energy, attack, defense, prix) VALUES
-(1, 'Warrior of Light', 'A brave warrior of the ancient order.', 'https://example.com/image1.jpg', 'warrior', 'fire', 20, 15, 25, 20, 55),
+(1, 'Warrior of Light', 'A brave warrior of the ancient order.', 'static/cards/bardvalor.jpg', 'warrior', 'fire', 20, 15, 25, 20, 55),
 (2, 'Mystic Mage', 'A mage with unparalleled control over arcane forces.', 'https://example.com/image2.jpg', 'mage', 'arcane', 15, 30, 20, 10, 55),
 (3, 'Shadow Rogue', 'A rogue that moves unseen in the shadows.', 'https://example.com/image3.jpg', 'rogue', 'darkness', 25, 20, 30, 15, 70),
 (4, 'Valiant Knight', 'A knight who defends the realm with honor.', 'https://example.com/image4.jpg', 'knight', 'earth', 30, 15, 25, 30, 75),

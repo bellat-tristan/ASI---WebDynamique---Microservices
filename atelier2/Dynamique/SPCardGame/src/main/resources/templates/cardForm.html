@@ -5,6 +5,7 @@
     <title>Welcome</title>
     <link rel="stylesheet" type="text/css" href="/css/custom.css" />
     <script src="/js/header.js"></script>
+    <script src="/js/credits.js"></script>
 </head>
 <body>
 <div th:replace="~{fragments/header :: header}">
@@ -41,13 +42,16 @@
                     <option value="bard">Bard</option>
                 </select>
             </div>
-            <label  for="form-rarity">Rarity</label>
+            <label  for="form-affinity">Affinity</label>
             <div >
-                <select  id="form-rarity" class="inputsform" name="rarity">
-                    <option value="common">Common</option>
-                    <option value="uncommon">Uncommon</option>
-                    <option value="rare">Rare</option>
-                    <option value="ultra_rare">Ultra Rare</option>
+                <select  id="form-affinity" class="inputsform" name="affinity">
+                    <option value="fire">Fire</option>
+                    <option value="arcane">Arcane</option>
+                    <option value="darkness">Darkness</option>
+                    <option value="earth">Earth</option>
+                    <option value="light">Light</option>
+                    <option value="wind">Wind</option>
+                    <option value="ice">Ice</option>
                 </select>
             </div>
             <label for="form-sliderhp">HP</label>
