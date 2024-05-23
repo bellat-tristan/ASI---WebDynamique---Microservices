@@ -43,12 +43,3 @@ INSERT INTO starter_card (id, name, description, img_url, family, affinity, hp, 
 (41, 'Lunar Guardian', 'A knight who draws strength from the moon.', '/cards/LunarGuardian.jpg', 'knight', 'earth', 40, 20, 25, 35, 105),
 (42, 'Divine Bard', 'A bard blessed by the divine.', '/cards/DivineBard.jpg', 'bard', 'wind', 25, 30, 25, 20, 75),
 (43, 'Infernal Warrior', 'A warrior fueled by infernal power.', '/cards/InfernalWarrior.jpg', 'warrior', 'fire', 50, 25, 45, 35, 135),
-(44, 'Arcane Scholar', 'A mage with deep knowledge of the arcane.', '/cards/ArcaneScholar2.jpg', 'mage', 'arcane', 20, 35, 30, 20, 85),
-(45, 'Nightshade', 'A rogue skilled in the use of poison.', '/cards/Nightshade.jpg', 'rogue', 'darkness', 25, 30, 40, 20, 90),
-(46, 'Stone Guardian', 'A knight with an unbreakable shield.', '/cards/StoneGuardian2.jpg', 'knight', 'earth', 45, 25, 30, 40, 110),
-(47, 'Radiant Cleric', 'A cleric who shines with holy light.', '/cards/RadiantCleric.jpg', 'cleric', 'light', 35, 45, 20, 25, 95),
-(48, 'Whispering Bard', 'A bard who tells secrets through song.', '/cards/WhisperingBard.jpg', 'bard', 'wind', 20, 25, 25, 20, 65),
-(49, 'Ember Knight', 'A knight whose sword blazes with fire.', '/cards/EmberKnight.jpg', 'warrior', 'fire', 45, 30, 35, 25, 95),
-(50, 'Frost Sorcerer', 'A mage with power over ice.', '/cards/FrostSorcerer.jpg', 'mage', 'ice', 20, 35, 30, 25, 85);
-
-
