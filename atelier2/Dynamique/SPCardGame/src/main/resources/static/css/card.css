@@ -22,11 +22,13 @@ body {
 }
 th {
     border: 1px solid black;
-    width: 100%;
+    width: 130%;
+    padding: 15px;
 }
 td {
     border: 1px solid black;
-    width: 100%;
+    width: 130%;
+    padding: 15px;
 }
 tbody{
     max-width: 100%;
