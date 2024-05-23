@@ -16,6 +16,12 @@ Git : https://github.com/bellat-tristan/ASI---WebDynamique---Microservices
 
     Tout les éléments du cahier des charges ont été réalisé. Il est possible de créer un compte sur l'application, de se connecter. On a la génération de cartes aléatoire (starter) dès l'inscription. Il y a la possibilité de mettre en vente ses cartes (l'utilisateur aura l'argent dès que quelqu'un l'achetera) et d'acheter des cartes. 
 
+    En + :
+        - Table de startercard qui permet d'avoir une liste de carte disponible afin de pouvoir générer 5 cartes aleatoirement à la création d'un compte.
+        - Recherche de carte
+        - Calcule automatique du prix de la carte en fonction de ses points d'HP, Energy... 
+        - Swagger (http://localhost:8080/swagger-ui/index.html#/)
+
 2. Tableau comparatif des architectures logicielles possibles (MVC, SOA, Microservices)
 
     | | MVC | SOA | Microservices |
@@ -35,7 +41,7 @@ Git : https://github.com/bellat-tristan/ASI---WebDynamique---Microservices
 
 4. Diagramme des classes 
 
-    ![Diagramme classe](img/diagClasse.PNG) 
+    ![Diagramme classe](img/DiagrammeClasse.drawio.png) 
 
 5. Diagramme représentant les workflows 
 
