@@ -1,5 +1,5 @@
 function myfonction(){
-    const GET_API_URL="http://localhost:8080/cards/listAll";
+    const GET_API_URL="http://localhost:8080/cards/sellingCards";
     let context =   {
         method: 'GET'
     };
@@ -16,25 +16,23 @@ function callback(response){
 
     for(const card of cardlist){
         let clone = document.importNode(template.content, true);
-        if(card.enVente == true)
-        {
-            newContent = clone.firstElementChild.innerHTML
-                .replace(/{{CardName}}/g, card.name)
-                .replace(/{{CardDescription}}/g, card.description)
-                .replace(/{{CardImage_src}}/g, card.imgUrl)
-                .replace(/{{CardAffinity}}/g, card.affinity)
-                .replace(/{{CardFamily}}/g, card.family)
-                .replace(/{{Cardhp}}/g, card.hp)
-                .replace(/{{CardEnergy}}/g, card.energy)
-                .replace(/{{CardDefence}}/g, card.defence)
-                .replace(/{{CardAttack}}/g, card.attack)
-                .replace(/{{CardPrice}}/g, card.prix)
-                .replace(/{{CardId}}/g, card.id);
-            clone.firstElementChild.innerHTML = newContent;
+        newContent = clone.firstElementChild.innerHTML
+            .replace(/{{CardName}}/g, card.name)
+            .replace(/{{CardDescription}}/g, card.description)
+            .replace(/{{CardImage_src}}/g, card.imgUrl)
+            .replace(/{{CardAffinity}}/g, card.affinity)
+            .replace(/{{CardFamily}}/g, card.family)
+            .replace(/{{Cardhp}}/g, card.hp)
+            .replace(/{{CardEnergy}}/g, card.energy)
+            .replace(/{{CardDefence}}/g, card.defense)
+            .replace(/{{CardAttack}}/g, card.attack)
+            .replace(/{{CardPrice}}/g, card.prix)
+            .replace(/{{CardId}}/g, card.id);
+        clone.firstElementChild.innerHTML = newContent;
 
-            let cardContainer = document.querySelector("#table-body");
-            cardContainer.appendChild(clone);
-        }
+        let cardContainer = document.querySelector("#table-body");
+        cardContainer.appendChild(clone);
+        console.log(card.prix);
     }
 }
 
@@ -44,7 +42,6 @@ function err_callback(error){
 
 function PreviewCard(source)
 {
-    console.log(source);
     let imageElement = document.querySelector("#imagePreview");
     imageElement.src = source;
 }

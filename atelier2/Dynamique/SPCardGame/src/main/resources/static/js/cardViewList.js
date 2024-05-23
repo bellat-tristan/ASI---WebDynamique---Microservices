@@ -25,7 +25,7 @@ function callback(response){
             .replace(/{{cardFamily}}/g, card.family)
             .replace(/{{cardHp}}/g, card.hp)
             .replace(/{{cardEnergie}}/g, card.energy)
-            .replace(/{{cardDefence}}/g, card.defence)
+            .replace(/{{cardDefence}}/g, card.defense)
             .replace(/{{cardAttack}}/g, card.attack)
             .replace(/{{cardPrix}}/g, card.prix);
         clone.firstElementChild.innerHTML= newContent;

@@ -21,13 +21,12 @@ function callback(response){
             newContent = clone.firstElementChild.innerHTML
                 .replace(/{{CardName}}/g, card.name)
                 .replace(/{{CardDescription}}/g, card.description)
-                .replace(/{{smallImgUrl}}/g, card.smallImgUrl)
                 .replace(/{{CardImage_src}}/g, card.imgUrl)
                 .replace(/{{CardAffinity}}/g, card.affinity)
                 .replace(/{{CardFamily}}/g, card.family)
                 .replace(/{{Cardhp}}/g, card.hp)
                 .replace(/{{CardEnergy}}/g, card.energy)
-                .replace(/{{CardDefence}}/g, card.defence)
+                .replace(/{{CardDefence}}/g, card.defense)
                 .replace(/{{CardAttack}}/g, card.attack)
                 .replace(/{{CardPrice}}/g, card.prix)
                 .replace(/{{enVente}}/g, card.enVente)
@@ -42,13 +41,12 @@ function callback(response){
             newContent = clone.firstElementChild.innerHTML
                 .replace(/{{CardName}}/g, card.name)
                 .replace(/{{CardDescription}}/g, card.description)
-                .replace(/{{smallImgUrl}}/g, card.smallImgUrl)
                 .replace(/{{CardImage_src}}/g, card.imgUrl)
                 .replace(/{{CardAffinity}}/g, card.affinity)
                 .replace(/{{CardFamily}}/g, card.family)
                 .replace(/{{Cardhp}}/g, card.hp)
                 .replace(/{{CardEnergy}}/g, card.energy)
-                .replace(/{{CardDefence}}/g, card.defence)
+                .replace(/{{CardDefence}}/g, card.defense)
                 .replace(/{{CardAttack}}/g, card.attack)
                 .replace(/{{CardPrice}}/g, card.prix)
                 .replace(/{{enVente}}/g, card.enVente)
@@ -68,13 +66,11 @@ function err_callback(error){
 
 function PreviewCard(source)
 {
-    console.log(source);
     let imageElement = document.querySelector("#imagePreview");
     imageElement.src = source;
 }
 
 function sellCard(idCard, state) {
-    console.log(state);
     if(state == 'false') {
         state = true;
         const POST_API_URL = `http://localhost:8080/cards/sell?idCard=${idCard}&state=${state}`;
