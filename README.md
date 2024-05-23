@@ -10,12 +10,4 @@
 ![Schéma dynamique](img/Dynamique%20V1.drawio.png)
 
 
-**Questions**
-* En quoi vos prototypes respectent le pattern MVC  
-
-* Avantages et inconvénients 
-
-|| Web Statique + Web Service | Dynamique |
-| :--------------- |:---------------:|:---------------:|
-| Avantages |   test | test |
-| Inconvénients | test | test |
+## Atelier 2

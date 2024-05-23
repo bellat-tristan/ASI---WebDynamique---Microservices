@@ -30,9 +30,14 @@ public class CardController {
     }
 
     @RequestMapping(value = {"/sell"}, method = RequestMethod.POST)
-    public ResponseEntity<Void> sellCard( @RequestParam Long idCard, boolean state) {
-        cardService.setIsSelling(idCard, state);
-        return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+    public ResponseEntity<Void> sellCard( @RequestParam Long idCard, boolean state, HttpSession session) {
+        Long userId = (Long) session.getAttribute("userId");
+        if (userId != null) {
+            cardService.setIsSelling(idCard, state);
+            return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+        } else {
+            return new ResponseEntity<>(HttpStatus.UNAUTHORIZED);
+        }
     }
 
     @RequestMapping(value = {"/listAll"}, method = RequestMethod.GET)
@@ -60,7 +65,7 @@ public class CardController {
     }
 
     @RequestMapping(value = {"/addCards"}, method = RequestMethod.POST)
-    public ResponseEntity<Card> addCard(Card card, HttpSession session) {
+    public ResponseEntity<Card> addCard(@RequestBody Card card, HttpSession session) {
         Long userId = (Long) session.getAttribute("userId");
         if (userId != null) {
             cardService.createCard(card, userId);

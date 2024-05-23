@@ -13,6 +13,7 @@
     <h1>Cardquest</h1>
     <hr>
 </div>
+<h3 id="titlepage">Vendrey une carte</h3>
 <div class="GlobalContain">
     <div class="TabContain">
         <table class="Tableau">
@@ -55,7 +56,7 @@
         <td>{{CardAttack}}</td>
         <td>{{CardPrice}}</td>
         <td><button onclick = "PreviewCard('{{CardImage_src}}')">Preview</button></td>
-        <td><button onclick = "sellCard('{{CardId}}',true)">Sell</button></td>
+        <td><button onclick = "sellCard('{{CardId}}','{{enVente}}')" id="sellButton">{{sellButton}}</button></td>
     </tr>
 </template>
 <script src="/js/sell.js"></script>

@@ -1,5 +1,3 @@
-// Define the writeheader function
-console.log("test");
 
 document.addEventListener("DOMContentLoaded", function() {
 
