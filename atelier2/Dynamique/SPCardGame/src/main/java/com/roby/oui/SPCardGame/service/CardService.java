@@ -99,15 +99,29 @@ public class CardService {
     }
 
     public void createCard(Card card, Long userId) {
-        Optional<User> userOpt = userRepository.findById(userId);
-        if (userOpt.isPresent()) {
-            User user = userOpt.get();
-            card.setOwner(user);
-            card.setEnVente(false);
-        } else {
-            //A la création, je ne dois pas passer pas le else, et je dois affecter un setOwner dans les cas
-            card.setEnVente(true);
+        // calcule du prix en fonction des paramètres de la carte
+        int hp = card.getHp();
+        int energy = card.getEnergy();
+        int attack = card.getAttack();
+        int defense = card.getDefense();
+
+        int maxAttributeValue = 100;
+        int maxPrice = 1000;
+
+        int totalValue = hp + energy + attack + defense;
+        double percentage = (double) totalValue / (4 * maxAttributeValue);
+        double rawPrice = percentage * maxPrice;
+        Random random = new Random();
+        double price = rawPrice * (0.9 + random.nextDouble() * 0.2);
+        int intPrice = (int) price;
+        if (intPrice < 1)
+            intPrice = 1;
+        else if (intPrice > 1000) {
+            intPrice = 1000;
         }
+
+        card.setPrix(intPrice);
+        card.setEnVente(true);
         cardRepository.save(card);
     }
 }
