@@ -1,9 +1,6 @@
 package com.roby.oui.SPCardGame.model;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import lombok.*;
 
 @Getter
@@ -12,6 +9,7 @@ import lombok.*;
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
+@Table(name = "starter_card")
 public class StarterCard {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

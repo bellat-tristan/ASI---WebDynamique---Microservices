@@ -1,3 +1,18 @@
+-- Déclaration de la table StarterCard
+CREATE TABLE starter_card (
+    id BIGINT AUTO_INCREMENT PRIMARY KEY,
+    name VARCHAR(255),
+    description VARCHAR(255),
+    img_url VARCHAR(255),
+    family VARCHAR(50),
+    affinity VARCHAR(50),
+    hp INT,
+    energy INT,
+    attack INT,
+    defense INT,
+    prix INT
+);
+
 -- Insertion des données
 INSERT INTO starter_card (id, name, description, img_url, family, affinity, hp, energy, attack, defense, prix) VALUES
 (1, 'Warrior of Light', 'A brave warrior of the ancient order.', 'https://example.com/image1.jpg', 'warrior', 'fire', 20, 15, 25, 20, 55),
