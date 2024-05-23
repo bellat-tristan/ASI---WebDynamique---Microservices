@@ -10,6 +10,7 @@
 <div th:replace="~{fragments/header :: header}">
     <h1> THIS IS A DEFAULT HEADER</h1>
 </div>
+<h3 id="titlepage">Créer une carte</h3>
 <div id="cardinfo-container">
     <div id="form-tocomplete">
         <h3>Add a card</h3>
@@ -129,6 +130,8 @@
             .then(data => {
                 console.log('Success:', data);
                 // Optionally, update the UI or redirect to another page
+                alert('Carte créée');
+                window.location.href = '/index';
             })
             .catch(error => {
                 console.error('Error:', error);

@@ -24,22 +24,6 @@ public class ViewController {
         return "index";
     }
 
-   /* @RequestMapping(value = {"/card"}, method = RequestMethod.GET)
-    public String viewCard(Model model, HttpSession session) {
-        model.addAttribute("pageTitle", "Card");
-        String username = (String) session.getAttribute("username");
-        model.addAttribute("username", username != null ? username : "Connectez-vous");
-        return "card";
-    }*/
-
-    /*@RequestMapping(value = {"/form-sample"}, method = RequestMethod.GET)
-    public String viewSearchCard(Model model, HttpSession session) {
-        model.addAttribute("pageTitle", "Form");
-        String username = (String) session.getAttribute("username");
-        model.addAttribute("username", username != null ? username : "Connectez-vous");
-        return "form-sample";
-    }*/
-
     @RequestMapping(value = {"/view"}, method = RequestMethod.GET)
     public String view(Model model, HttpSession session) {
         return "cardView";
