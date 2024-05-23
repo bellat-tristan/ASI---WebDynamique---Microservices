@@ -74,4 +74,14 @@ public class CardController {
             return new ResponseEntity<>(HttpStatus.UNAUTHORIZED);
         }
     }
+
+    @GetMapping("/search/{name}")
+    public ResponseEntity<Card> getCardByName(@PathVariable String name) {
+        Card card = cardService.findCardByName(name);
+        if (card != null) {
+            return new ResponseEntity<>(card, HttpStatus.OK);
+        } else {
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
+    }
 }
